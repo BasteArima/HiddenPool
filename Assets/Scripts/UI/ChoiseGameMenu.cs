@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,7 @@ public class ChoiseGameMenu : BaseMenu
 {
     [SerializeField] private Image _pashalkaImage;
     [SerializeField] private Sprite[] _pashalkaSprite;
+
     private int _runoMessClickCount = 0;
 
     public override void SetState(bool state)
