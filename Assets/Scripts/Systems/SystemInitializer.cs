@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class SystemInitializer : MonoBehaviour
 {
-    [SerializeField] private AppData _data;
     [SerializeField] private BaseMonoSystem[] _systems;
 
-    private void Awake()
+    public void InitializeSystems(AppData data)
     {
-        _data.matchData.state.Value = MatchData.State.MainMenu;
-        _data.matchData.game.Value = MatchData.MiniGames.None;
+        data.matchData.state.Value = MatchData.State.MainMenu;
+        data.matchData.game.Value = MatchData.MiniGames.None;
 
         foreach (var system in _systems)
         {
-            system.Init(_data);
+            system.Init(data);
         }
     }
 }

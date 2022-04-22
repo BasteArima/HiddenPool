@@ -1,26 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
 using Steamworks;
 using TMPro;
-using Sirenix.OdinInspector;
 using UniRx;
+using UnityEngine;
 
 public class SteamLobby : BaseMonoSystem
 {
+    public static SteamLobby Instance;
+
     //Callbacks
     protected Callback<LobbyCreated_t> _lobbyCreated;
     protected Callback<GameLobbyJoinRequested_t> _joinRequest;
     protected Callback<LobbyEnter_t> _lobbyEntered;
 
     //Variables
-    [SerializeField, ReadOnly] private ulong _currentLobbyID;
+    public ulong CurrentLobbyID;
     private const string _hostAddressKey = "HostAddress";
     private CustomNetworkManager _manager;
 
     //Gameobject
     [SerializeField] private TMP_Text _lobbyNameText;
+    [SerializeField] private TMP_Text _everyoneText;
+    [SerializeField] private TMP_Text _clienText;
+    [SerializeField] private TMP_Text _everyoneTextTwo;
+    [SerializeField] private TMP_Text _clienTextTwo;
 
     public override void Init(AppData data)
     {
@@ -31,13 +34,14 @@ public class SteamLobby : BaseMonoSystem
     private void SetObservables()
     {
         data.matchData.state
-            .Where(x => x == MatchData.State.InitializeGame)
+            .Where(x => x == MatchData.State.Lobby)
             .Subscribe(_ => OnHostLobbyButton());
     }
 
     private void Start()
     {
         if (!SteamManager.Initialized) return;
+        if (null == Instance) Instance = this;
 
         _manager = GetComponent<CustomNetworkManager>();
 
@@ -48,7 +52,12 @@ public class SteamLobby : BaseMonoSystem
 
     private void OnHostLobbyButton()
     {
-        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, _manager.maxConnections);
+        SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic, _manager.maxConnections);
+    }
+
+    public static void LeaveLobby()
+    {
+        SteamMatchmaking.LeaveLobby(new CSteamID(Instance.CurrentLobbyID));
     }
 
     private void OnLobbyCreated(LobbyCreated_t callback)
@@ -72,12 +81,20 @@ public class SteamLobby : BaseMonoSystem
     private void OnLobbyEntered(LobbyEnter_t callback)
     {
         //Everyone
-        _currentLobbyID = callback.m_ulSteamIDLobby;
+        CurrentLobbyID = callback.m_ulSteamIDLobby;
         _lobbyNameText.gameObject.SetActive(true);
         _lobbyNameText.text = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "name");
 
+        _everyoneText.text = "Everyone: " + Random.Range(0, 100).ToString();
+        _clienText.text = "Client: " + Random.Range(0, 100).ToString();
+
         //Client
         if (NetworkServer.active) return;
+
+
+        _everyoneTextTwo.text = "Everyone Two: " + Random.Range(0, 100).ToString();
+        _clienTextTwo.text = "Client Two: " + Random.Range(0, 100).ToString();
+
 
         _manager.networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), _hostAddressKey);
 

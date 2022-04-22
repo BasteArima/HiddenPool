@@ -9,6 +9,8 @@ public class ChoiseGameMenu : BaseMenu
     [SerializeField] private Sprite[] _pashalkaSprite;
 
     private int _runoMessClickCount = 0;
+    private List<SoundType> _runeSoundTypes = new List<SoundType> { SoundType.RuneArcane, SoundType.RuneBounty, SoundType.RuneDD,
+            SoundType.RuneHaste, SoundType.RuneInvisible, SoundType.RuneRegen, SoundType.RuneWater, SoundType.RuneIllusion };
 
     public override void SetState(bool state)
     {
@@ -31,35 +33,7 @@ public class ChoiseGameMenu : BaseMenu
     public void OnRunoMessButton()
     {
         var random = Random.Range(0, 8);
-        switch (random)
-        {
-            case 0:
-                SoundDesigner.PlaySound(SoundType.RuneArcane);
-                break;
-            case 1:
-                SoundDesigner.PlaySound(SoundType.RuneBounty);
-                break;
-            case 2:
-                SoundDesigner.PlaySound(SoundType.RuneDD);
-                break;
-            case 3:
-                SoundDesigner.PlaySound(SoundType.RuneHaste);
-                break;
-            case 4:
-                SoundDesigner.PlaySound(SoundType.RuneInvisible);
-                break;
-            case 5:
-                SoundDesigner.PlaySound(SoundType.RuneRegen);
-                break;
-            case 6:
-                SoundDesigner.PlaySound(SoundType.RuneWater);
-                break;
-            case 7:
-                SoundDesigner.PlaySound(SoundType.RuneIllusion);
-                break;
-            default:
-                break;
-        }
+        SoundDesigner.PlaySound(_runeSoundTypes[random]);
 
         _runoMessClickCount++;
         if (_runoMessClickCount > 5)
