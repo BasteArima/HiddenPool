@@ -4,23 +4,13 @@ public class MainMenu : BaseMenu
 {
     public void OnHostButton()
     {
-        InitializeCore();
+        data.matchData.state.Value = MatchData.State.Lobby;
+        InterfaceManager.Toggle(MenuName.LobbyMenu);
     }
 
     public void OnClientButton()
     {
         InterfaceManager.Toggle(MenuName.ChoiseGameMenu);
-    }
-
-    public void OnServerButton()
-    {
-        InitializeCore();
-    }
-
-    private void InitializeCore()
-    {
-        data.matchData.state.Value = MatchData.State.InitializeGame;
-        InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
     }
 
     public void OnAboutButton()

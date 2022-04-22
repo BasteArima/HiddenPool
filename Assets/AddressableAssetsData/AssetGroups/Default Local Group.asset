@@ -1,0 +1,513 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: cab7ea849e1bc564cac821f86c2c976e
+  m_SerializeEntries:
+  - m_GUID: 5967b690908116c47b678a40efd1355e
+    m_Address: Assets/Sprites/HeroesPortraits/abaddon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8f77447061667247b0c4098368f00ac
+    m_Address: Assets/Sprites/HeroesPortraits/abyssal_underlord.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46f1decbea9a9ab4aaf1d7b2fe2ace5a
+    m_Address: Assets/Sprites/HeroesPortraits/alchemist.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c44dd281a8d138c4a9d57693cce72856
+    m_Address: Assets/Sprites/HeroesPortraits/ancient_apparition.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d86b237b2d3373340a22452f888efa80
+    m_Address: Assets/Sprites/HeroesPortraits/antimage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 107ff0f0a7bfbc54e92d5f36b98ad6f3
+    m_Address: Assets/Sprites/HeroesPortraits/arc_warden.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de22c693bda258247b6f509cba261a96
+    m_Address: Assets/Sprites/HeroesPortraits/axe.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a1a6cf081704224792ab4b90340694a
+    m_Address: Assets/Sprites/HeroesPortraits/bane.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b95789d98cac221499079ea8a9ea1051
+    m_Address: Assets/Sprites/HeroesPortraits/batrider.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ddf276586a9157540abe776f8d31b06e
+    m_Address: Assets/Sprites/HeroesPortraits/beastmaster.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6d157ed44d7dd394e87669a686915264
+    m_Address: Assets/Sprites/HeroesPortraits/bloodseeker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8b1d3de05966daf45b152e3410b30a49
+    m_Address: Assets/Sprites/HeroesPortraits/bounty_hunter.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 14a0fc4293f054540a4430d96f152e7d
+    m_Address: Assets/Sprites/HeroesPortraits/brewmaster.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 645b3372b0aa1004da96bf4823291351
+    m_Address: Assets/Sprites/HeroesPortraits/bristleback.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 01b583e695fcaf942a369c4711df4c22
+    m_Address: Assets/Sprites/HeroesPortraits/broodmother.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b1afe63fb17864747b471fff818bd653
+    m_Address: Assets/Sprites/HeroesPortraits/centaur.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ddd03ead3e1e4c74a8a564a4649cbfc6
+    m_Address: Assets/Sprites/HeroesPortraits/chaos_knight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7dc85904695c3cc4e8fa0070bdd0c1e5
+    m_Address: Assets/Sprites/HeroesPortraits/chen.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8922278b46c75624fb2ef073261e3b0d
+    m_Address: Assets/Sprites/HeroesPortraits/clinkz.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59e648654416664439338c57158a0863
+    m_Address: Assets/Sprites/HeroesPortraits/crystal_maiden.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff03067eef467024d8ed6b74aa36a060
+    m_Address: Assets/Sprites/HeroesPortraits/dark_seer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6fb1da72166c266428c0612ec288489e
+    m_Address: Assets/Sprites/HeroesPortraits/dark_willow.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: db30c6706d065a34fa04f6ac519bd0eb
+    m_Address: Assets/Sprites/HeroesPortraits/dawnbreaker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b7895c928c44ff6468b37be36b1d97db
+    m_Address: Assets/Sprites/HeroesPortraits/dazzle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 08c3f796ce8dde345b84dedbb9328f54
+    m_Address: Assets/Sprites/HeroesPortraits/death_prophet.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ef9736cc8daffe4eb4b7fa257f9966e
+    m_Address: Assets/Sprites/HeroesPortraits/disruptor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c78652f1d73e5ec498087c6accd0a0a4
+    m_Address: Assets/Sprites/HeroesPortraits/doom_bringer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3b4b89a01f4c4fa43997b5bd309802db
+    m_Address: Assets/Sprites/HeroesPortraits/dragon_knight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9229b0d7437501542a3fdac977840054
+    m_Address: Assets/Sprites/HeroesPortraits/drow_ranger.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7df0f53d420fe1d44b91ec3e53a940fb
+    m_Address: Assets/Sprites/HeroesPortraits/earth_spirit.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ef9a910b63542a14c914ccfb71dd5bda
+    m_Address: Assets/Sprites/HeroesPortraits/earthshaker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3e3f1a041a8b5fb44afceb941f6da3aa
+    m_Address: Assets/Sprites/HeroesPortraits/elder_titan.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 218c26d4199c20d409bffdcefca64047
+    m_Address: Assets/Sprites/HeroesPortraits/ember_spirit.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 34955133f7582404fbc68d96a38c36ff
+    m_Address: Assets/Sprites/HeroesPortraits/enchantress.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16901a909fc0d4c44914a1f7e9afef2f
+    m_Address: Assets/Sprites/HeroesPortraits/enigma.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 967e277eb0ec44547a6f661ee5901bf7
+    m_Address: Assets/Sprites/HeroesPortraits/faceless_void.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 24730a0b97625274aa2da7ebd4dc937d
+    m_Address: Assets/Sprites/HeroesPortraits/furion.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 722b42161e90cae4d9adcfd0163c3c3f
+    m_Address: Assets/Sprites/HeroesPortraits/grimstroke.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 757eff706bb39ad498c88c8ecacb2a7b
+    m_Address: Assets/Sprites/HeroesPortraits/gyrocopter.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 49df807a268ef494eb9fef80e1689293
+    m_Address: Assets/Sprites/HeroesPortraits/hoodwink.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3223409d88afdf64b928e8d0bf059de2
+    m_Address: Assets/Sprites/HeroesPortraits/huskar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 781ed1fb71d55264780ce383d8ab4c97
+    m_Address: Assets/Sprites/HeroesPortraits/invoker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fd34511e689ddc34cb05f2fdaa9c26a9
+    m_Address: Assets/Sprites/HeroesPortraits/jakiro.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d6cea562fb3ae6749be78c297aa9b741
+    m_Address: Assets/Sprites/HeroesPortraits/juggernaut.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 324582206cc04ad49922b19998e9e0c8
+    m_Address: Assets/Sprites/HeroesPortraits/keeper_of_the_light.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 069191a1547b96642be6eb1e94277681
+    m_Address: Assets/Sprites/HeroesPortraits/kunkka.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bfaaaa46a9925e5458b4bc689c751bc4
+    m_Address: Assets/Sprites/HeroesPortraits/legion_commander.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6a449b7263efcfc4eaf8731db31adf75
+    m_Address: Assets/Sprites/HeroesPortraits/leshrac.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e2df997f3867de64c9a4d0a305ee0867
+    m_Address: Assets/Sprites/HeroesPortraits/lich.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0d22630730d4eb4cb33c32f55650c8c
+    m_Address: Assets/Sprites/HeroesPortraits/life_stealer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a50184415b96c8148a4e71d96b01cdc3
+    m_Address: Assets/Sprites/HeroesPortraits/lina.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16ae3839e82d59c4f83d1bd891c1bf9e
+    m_Address: Assets/Sprites/HeroesPortraits/lion.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c79d615d467eb6a4aa3f83c13e84990d
+    m_Address: Assets/Sprites/HeroesPortraits/lone_druid.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c35c650b78eb36749baa2b4c4f2765be
+    m_Address: Assets/Sprites/HeroesPortraits/luna.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ab7adad0c017d74cb0d51f3f2ef9637
+    m_Address: Assets/Sprites/HeroesPortraits/lycan.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e1ee48c7e82c5f549b2315ba7ad0176c
+    m_Address: Assets/Sprites/HeroesPortraits/magnataur.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc8e42b46b996204aa2952369197be94
+    m_Address: Assets/Sprites/HeroesPortraits/marci.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d7d29c512701b7f4db01d99d41324ef8
+    m_Address: Assets/Sprites/HeroesPortraits/mars.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a81f29db9266944eae9663c8626251f
+    m_Address: Assets/Sprites/HeroesPortraits/medusa.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 60f5ec4f8d86cb64d99fd8b643011b84
+    m_Address: Assets/Sprites/HeroesPortraits/meepo.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e9701977f5d2b0f4ca8838d2f6d17433
+    m_Address: Assets/Sprites/HeroesPortraits/mirana.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ac812ef44adb8f14098858835d8fb135
+    m_Address: Assets/Sprites/HeroesPortraits/monkey_king.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c7711839cfc1ec949ac9ea6019097f6c
+    m_Address: Assets/Sprites/HeroesPortraits/morphling.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cce6e31917ab5da4d82c5ece87b6312a
+    m_Address: Assets/Sprites/HeroesPortraits/naga_siren.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2281f3ca47a48c940a337b83fd4515e0
+    m_Address: Assets/Sprites/HeroesPortraits/necrolyte.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6d6111cd2e16d6448aeca54e9f02392
+    m_Address: Assets/Sprites/HeroesPortraits/nevermore.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ce4f0b5d96e891e48956e9e830a0519d
+    m_Address: Assets/Sprites/HeroesPortraits/night_stalker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bfae716f9349328419a8d3a6ac9a009a
+    m_Address: Assets/Sprites/HeroesPortraits/nyx_assassin.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 88333883740dda947a825883db68f3a9
+    m_Address: Assets/Sprites/HeroesPortraits/obsidian_destroyer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ebd197a4fe9ace428cacb60bd5dac36
+    m_Address: Assets/Sprites/HeroesPortraits/ogre_magi.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3b11542cf6f63bd4fb367bcb8ef28960
+    m_Address: Assets/Sprites/HeroesPortraits/omniknight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 468c6851b87e5bb40b396b660fd2effb
+    m_Address: Assets/Sprites/HeroesPortraits/oracle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2418d545bd33e3b47b4655ab146dcf34
+    m_Address: Assets/Sprites/HeroesPortraits/pangolier.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a81543aa92c6b3e499f9017cdd61ba84
+    m_Address: Assets/Sprites/HeroesPortraits/phantom_assassin.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4e5aa20ea3e007f4eafa0173fdeec8c5
+    m_Address: Assets/Sprites/HeroesPortraits/phantom_lancer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6f41bb9823dd54b4481d50c267b12349
+    m_Address: Assets/Sprites/HeroesPortraits/phoenix.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 97000104fad186940a6909a29beeef23
+    m_Address: Assets/Sprites/HeroesPortraits/puck.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5f8fa3271d4a2f84cb0b70c9630954e5
+    m_Address: Assets/Sprites/HeroesPortraits/pudge.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 546b6ab5c2529d441938e6a05c441adb
+    m_Address: Assets/Sprites/HeroesPortraits/pugna.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 198823d0b621d7f4aaaff56f68ba616d
+    m_Address: Assets/Sprites/HeroesPortraits/queenofpain.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51374b751d46414409755d9cda913a66
+    m_Address: Assets/Sprites/HeroesPortraits/rattletrap.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4508d40fa55ba8d45b007d1c7069fa2e
+    m_Address: Assets/Sprites/HeroesPortraits/razor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 23fab882c01e7964291aa5d27f3fc02a
+    m_Address: Assets/Sprites/HeroesPortraits/riki.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 66d74ce7297948b47a8ca2da9791896f
+    m_Address: Assets/Sprites/HeroesPortraits/rubick.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5a4538fed1fb4640bb8ec6b3d26064e
+    m_Address: Assets/Sprites/HeroesPortraits/sand_king.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 21e36b59aaca4104c9f12ddbc0554459
+    m_Address: Assets/Sprites/HeroesPortraits/shadow_demon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0deb7944fac0c314a956f56d2a257402
+    m_Address: Assets/Sprites/HeroesPortraits/shadow_shaman.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3246fe928e47e0b45b5f1517481601c4
+    m_Address: Assets/Sprites/HeroesPortraits/shredder.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ded3cd0e5a132244680d7ef7f4985940
+    m_Address: Assets/Sprites/HeroesPortraits/silencer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30be2388c3970084a8f884f8a605363a
+    m_Address: Assets/Sprites/HeroesPortraits/skeleton_king.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9153d83d199100e4b98312050b39aaef
+    m_Address: Assets/Sprites/HeroesPortraits/skywrath_mage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d266bd55d90fe6d47a1ff1f93cf653e3
+    m_Address: Assets/Sprites/HeroesPortraits/slardar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 88eb6d4729b06d246b86ce033fb37c06
+    m_Address: Assets/Sprites/HeroesPortraits/slark.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 168df264ba3cd7a4eaf00d2eb504673b
+    m_Address: Assets/Sprites/HeroesPortraits/snapfire.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e738adb9bf642464a9792dd8b43d0ddb
+    m_Address: Assets/Sprites/HeroesPortraits/sniper.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 442ead42098c94d4d8c9ca4f4b6fa504
+    m_Address: Assets/Sprites/HeroesPortraits/spectre.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e9c4729e1575f19428ff2bc7b7c23b04
+    m_Address: Assets/Sprites/HeroesPortraits/spirit_breaker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 846402cc4b77ccf4ea69e295b8c60d04
+    m_Address: Assets/Sprites/HeroesPortraits/storm_spirit.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b2dd527cce6523942b950acf84ca1084
+    m_Address: Assets/Sprites/HeroesPortraits/sven.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3237c4245dc5ad4a9bbbfff1ff684c3
+    m_Address: Assets/Sprites/HeroesPortraits/techies.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5239b5885095cc64ca904206c9caa131
+    m_Address: Assets/Sprites/HeroesPortraits/templar_assassin.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68ef79c4a10a0cc4094bcfd42a12cd07
+    m_Address: Assets/Sprites/HeroesPortraits/terrorblade.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7f80ac75467e1234abbd0b5c67d0462e
+    m_Address: Assets/Sprites/HeroesPortraits/tidehunter.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5520f5de17588b845aa6407997690ca0
+    m_Address: Assets/Sprites/HeroesPortraits/tinker.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 633218441319ef149b9b5264ba035f5b
+    m_Address: Assets/Sprites/HeroesPortraits/tiny.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a9429f67790638c4aac46797225e09d1
+    m_Address: Assets/Sprites/HeroesPortraits/treant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b84e46f95e3660c4d8ff9366f3c5fe9f
+    m_Address: Assets/Sprites/HeroesPortraits/troll_warlord.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: abe8fe7e60d331c469e81af4ea1935e2
+    m_Address: Assets/Sprites/HeroesPortraits/tusk.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b9bbd0dae71546d48b2e8b051b4a65f3
+    m_Address: Assets/Sprites/HeroesPortraits/undying.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dc8a8fbd7e400d842bd47c0cae4f69a6
+    m_Address: Assets/Sprites/HeroesPortraits/ursa.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df45cd8c633151a418ae9f3fa7654eee
+    m_Address: Assets/Sprites/HeroesPortraits/vengefulspirit.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 87cfa424c17da6c4bbfaa11ebd5558eb
+    m_Address: Assets/Sprites/HeroesPortraits/venomancer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4d711d5033050954190bf6ab29054b22
+    m_Address: Assets/Sprites/HeroesPortraits/viper.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0a9f2a24a3ae074582275c4afbf6e2a
+    m_Address: Assets/Sprites/HeroesPortraits/visage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7dc8cac4e93732b4c91a85dc3082d6dc
+    m_Address: Assets/Sprites/HeroesPortraits/void_spirit.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cbb87df60861e0b418ee25780a07329f
+    m_Address: Assets/Sprites/HeroesPortraits/warlock.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5f207e646cd60d54ea3e46f599b67952
+    m_Address: Assets/Sprites/HeroesPortraits/weaver.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2cea1244f9a40274a88b63e2b5fcbc94
+    m_Address: Assets/Sprites/HeroesPortraits/windrunner.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 553d1b149cdd95a498757c1daa456925
+    m_Address: Assets/Sprites/HeroesPortraits/winter_wyvern.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5243fb3384ac19349a6385232c8151e7
+    m_Address: Assets/Sprites/HeroesPortraits/wisp.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bbecc59240ac2ef4f974552dfd5e2451
+    m_Address: Assets/Sprites/HeroesPortraits/witch_doctor.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 358eb8a405816694693f8660ad958317
+    m_Address: Assets/Sprites/HeroesPortraits/zuus.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d598a3a28c2de264ea258e4424d2f5b2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e7259a86771171d41aa48e29b605db5c, type: 2}
+    - {fileID: 11400000, guid: 43d590f758011fa429a566dec6e1521c, type: 2}

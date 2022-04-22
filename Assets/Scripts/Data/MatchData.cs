@@ -8,7 +8,10 @@ public class MatchData : ScriptableObject
 {
     public enum State
     {
+        None,
+        AppStart,
         MainMenu,
+        Lobby,
         InitializeGame,
         Game,
         EndGame,
@@ -27,6 +30,6 @@ public class MatchData : ScriptableObject
         CodeHero
     }
 
-    public ReactiveProperty<State> state = new ReactiveProperty<State>(State.MainMenu);
+    public ReactiveProperty<State> state = new ReactiveProperty<State>(State.None);
     public ReactiveProperty<MiniGames> game = new ReactiveProperty<MiniGames>(MiniGames.None);
 }

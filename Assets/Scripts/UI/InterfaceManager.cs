@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum MenuName
 {
-    None, MainMenu, HiddenPoolCoreMenu, AboutMenu, SettingsMenu, ChoiseGameMenu, RunoMessCoreMenu, TeaEyeWinnerCoreMenu, ShockContentCoreMenu, MemeHistoryCoreMenu, MenuQuizCoreMenu, Locked1, Locked2, PauseMenu, CodeHeroCoreMenu
+    None, MainMenu, HiddenPoolCoreMenu, AboutMenu, SettingsMenu, ChoiseGameMenu, RunoMessCoreMenu, TeaEyeWinnerCoreMenu, ShockContentCoreMenu, MemeHistoryCoreMenu, MenuQuizCoreMenu, Locked1, Locked2, PauseMenu, CodeHeroCoreMenu, LobbyMenu
 }
 public class InterfaceManager : BaseMonoSystem
 {
