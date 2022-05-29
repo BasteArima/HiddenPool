@@ -26,6 +26,8 @@ public enum SoundBaseType
 public class SoundDesigner : BaseMonoSystem
 {
     private static SoundDesigner _instance;
+    public static float GlobalSoundVolume { get; set; }
+    public static float GlobalMusicVolume { get; set; }
     public static bool SoundMuted { get; set; }
     public static bool MusicMuted { get; set; }
 
