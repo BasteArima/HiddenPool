@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System.Collections;
+using System;
 
 public class CardBase : MonoBehaviour, IPointerClickHandler
 {
@@ -23,6 +24,7 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TMP_Text _cardName;
     [SerializeField] private Sprite[] _attributeSprites;
 
+    [SerializeField] private CardStatuses _cardStatus = CardStatuses.None;
     private int _clickCount = 0;
     private CardsGenerateSystem _cardsGenerateSystem;
 
@@ -59,7 +61,7 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
     {
         _clickCount++;
 
-        if (_clickCount > System.Enum.GetNames(typeof(CardStatuses)).Length - 1)
+        if (_clickCount > Enum.GetNames(typeof(CardStatuses)).Length - 1)
             _clickCount = 0;
 
         SetStatus((CardStatuses)_clickCount);
@@ -67,6 +69,8 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
 
     private void SetStatus(CardStatuses status = CardStatuses.None)
     {
+        _cardStatus = status;
+
         switch (status)
         {
             case CardStatuses.None:
