@@ -2,17 +2,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using System.Collections;
 
 public class CardBase : MonoBehaviour, IPointerClickHandler
 {
     public enum CardStatuses { None, Closed, Maybe }
 
+    [Header("Settings")]
+    [SerializeField] private float _choiseCardColorSpeed = 0.5f;
+
+    [Header("Hovers")]
     [SerializeField] private GameObject _disableHoverImg;
     [SerializeField] private GameObject _maybeHoverImg;
+    [SerializeField] private Image _choisedHoverImg;
+
+    [Header("Elements")]
     [SerializeField] private Image _cardImg;
     [SerializeField] private Image _cardAttribute;
     [SerializeField] private TMP_Text _cardName;
-
     [SerializeField] private Sprite[] _attributeSprites;
 
     private int _clickCount = 0;
@@ -44,7 +52,7 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
         else if (eventData.button == PointerEventData.InputButton.Middle)
             ClearCard();
         else if (eventData.button == PointerEventData.InputButton.Right)
-            _cardsGenerateSystem.SetMainCard(_cardImg.sprite);
+            StartCoroutine(ChoiseMainCard());
     }
 
     private void OnCardClick()
@@ -76,12 +84,15 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    private void OnMouseOver()
+    private IEnumerator ChoiseMainCard()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("The gameObject has been right clicked");
-        }
+        _cardsGenerateSystem.SetMainCard(_cardImg.sprite);
+        _choisedHoverImg.gameObject.SetActive(true);
+        Tween myTween = _cardImg.DOColor(Color.green, _choiseCardColorSpeed);
+        yield return myTween.WaitForCompletion();
+        _cardImg.DOColor(Color.white, _choiseCardColorSpeed);
+        yield return myTween.WaitForCompletion();
+        _choisedHoverImg.gameObject.SetActive(false);
     }
 
     public void ClearCard()
