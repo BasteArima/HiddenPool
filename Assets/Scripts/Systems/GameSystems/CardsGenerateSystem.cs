@@ -36,6 +36,13 @@ public class CardsGenerateSystem : BaseGameSystem
     /// </summary>
     public override void Initialize()
     {
+        if(_cardCount > data.heroesData.heroesSprites.Length)
+        {
+            Debug.LogError($"You want spawn cards more than you have sprites");
+            data.matchData.state.Value = MatchData.State.EndGame;
+            return;
+        }
+
         if(!string.IsNullOrEmpty(_seedInput.text)) Random.InitState(int.Parse(_seedInput.text));
         _seed = Random.state;
         _currentSeedOutput.text = Random.seed.ToString();
