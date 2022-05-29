@@ -43,7 +43,7 @@ public class CardsGenerateSystem : BaseGameSystem
         for (int i = 0; i < _cardCount; i++)
         {
             var heroData = data.heroesData.heroesSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
-            //var heroData = data.heroesData.heroes[Random.Range(0,data.heroesData.heroes.Length+1)];
+            //var heroData = data.heroesData.heroes[Random.Range(0, data.heroesData.heroes.Length+1)];
             var card = Instantiate(_cardPrefab, _contentParent);
             //card.SetData(heroData.cardImage, heroData.name, heroData.attribute);
             card.SetData(this, heroData);
