@@ -46,7 +46,7 @@ public class CardsGenerateSystem : BaseGameSystem
             //var heroData = data.heroesData.heroes[Random.Range(0,data.heroesData.heroes.Length+1)];
             var card = Instantiate(_cardPrefab, _contentParent);
             //card.SetData(heroData.cardImage, heroData.name, heroData.attribute);
-            card.SetData(heroData);
+            card.SetData(this, heroData);
             _cards.Add(card);
         }
 
@@ -64,10 +64,15 @@ public class CardsGenerateSystem : BaseGameSystem
         _choisedCard.sprite = _cards[Random.Range(0, _cards.Count)].CardSprite;
     }
 
+    public void SetMainCard(Sprite sprite)
+    {
+        _choisedCard.sprite = sprite;
+    }
+
     public void RefreshCards()
     {
         foreach (var card in _cards)
-            card.SetStatus(true);
+            card.ClearCard();
     }
 
     private int GetRandomNonRepetitiveNumber(int min, int max)
