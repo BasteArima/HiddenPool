@@ -1,14 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChoiseGameMenu : BaseMenu
 {
-    [SerializeField] private Image _pashalkaImage;
-    [SerializeField] private Sprite[] _pashalkaSprite;
-
-    private int _runoMessClickCount = 0;
     private List<SoundType> _runeSoundTypes = new List<SoundType> { SoundType.RuneArcane, SoundType.RuneBounty, SoundType.RuneDD,
             SoundType.RuneHaste, SoundType.RuneInvisible, SoundType.RuneRegen, SoundType.RuneWater, SoundType.RuneIllusion };
 
@@ -17,8 +11,6 @@ public class ChoiseGameMenu : BaseMenu
         base.SetState(state);
         if (state)
         {
-            _pashalkaImage.gameObject.SetActive(false);
-            _runoMessClickCount = 0;
         }
     }
 
@@ -32,22 +24,9 @@ public class ChoiseGameMenu : BaseMenu
 
     public void OnRunoMessButton()
     {
-        var random = Random.Range(0, 8);
+        var random = Random.Range(0, _runeSoundTypes.Count);
+        Debug.Log("Random: " + random);
         SoundDesigner.PlaySound(_runeSoundTypes[random]);
-
-        _runoMessClickCount++;
-        if (_runoMessClickCount > 5)
-        {
-            _pashalkaImage.gameObject.SetActive(true);
-            var rand = Random.Range(0, _pashalkaSprite.Length);
-            _pashalkaImage.sprite = _pashalkaSprite[rand];
-            _runoMessClickCount = 0;
-        }
-    }
-
-    public void OnPashalkaButton()
-    {
-        _pashalkaImage.gameObject.SetActive(false);
     }
 
     public void OnTeaEyeWinnerButton()
