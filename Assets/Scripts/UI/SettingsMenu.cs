@@ -50,8 +50,8 @@ public class SettingsMenu : BaseMenu
 
     private void OnToggleScreenModeButton()
     {
-        if (Screen.fullScreen) 
-            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        if (!Screen.fullScreen) 
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         else 
             Screen.fullScreenMode = FullScreenMode.Windowed;
     }

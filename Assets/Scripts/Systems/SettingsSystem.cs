@@ -10,8 +10,8 @@ public class SettingsSystem : BaseMonoSystem
 
     public void LoadSettings()
     {
-        SoundDesigner.GlobalSoundVolume = PlayerPrefs.GetFloat("SoundValue", 0);
-        SoundDesigner.GlobalMusicVolume = PlayerPrefs.GetFloat("MusicValue", 0);
+        SoundDesigner.GlobalSoundVolume = PlayerPrefs.GetFloat("SoundValue", 1);
+        SoundDesigner.GlobalMusicVolume = PlayerPrefs.GetFloat("MusicValue", 1);
 
         SoundDesigner.SetVolumeAudioSource(SoundBaseType.Sound, SoundDesigner.GlobalSoundVolume);
         SoundDesigner.SetVolumeAudioSource(SoundBaseType.Music, SoundDesigner.GlobalMusicVolume);

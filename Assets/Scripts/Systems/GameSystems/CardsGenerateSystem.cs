@@ -18,6 +18,8 @@ public class CardsGenerateSystem : BaseGameSystem
 
     [SerializeField] private Random.State _seed;
 
+    public bool MainCardIsLocked { get; private set; }
+
     public override void Init(AppData data)
     {
         base.Init(data);
@@ -43,7 +45,9 @@ public class CardsGenerateSystem : BaseGameSystem
             return;
         }
 
-        if(!string.IsNullOrEmpty(_seedInput.text)) Random.InitState(int.Parse(_seedInput.text));
+        MainCardIsLocked = false;
+
+        if (!string.IsNullOrEmpty(_seedInput.text)) Random.InitState(int.Parse(_seedInput.text));
         _seed = Random.state;
         _currentSeedOutput.text = Random.seed.ToString();
 
@@ -73,6 +77,8 @@ public class CardsGenerateSystem : BaseGameSystem
 
     public void SetMainCard(Sprite sprite)
     {
+        if (MainCardIsLocked) return;
+
         _choisedCard.sprite = sprite;
     }
 
@@ -80,6 +86,11 @@ public class CardsGenerateSystem : BaseGameSystem
     {
         foreach (var card in _cards)
             card.ClearCard();
+    }
+
+    public void ToggleLockMainCard()
+    {
+        MainCardIsLocked = !MainCardIsLocked;
     }
 
     private int GetRandomNonRepetitiveNumber(int min, int max)
