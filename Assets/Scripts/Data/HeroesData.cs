@@ -7,6 +7,9 @@ public class HeroesData : ScriptableObject
 {
     public HeroData[] heroes;
     public Sprite[] heroesSprites;
+    public Sprite[] itemsSprites;
+    public Sprite[] neutralItems;
+    public Sprite[] mobs;
 }
 
 [System.Serializable]

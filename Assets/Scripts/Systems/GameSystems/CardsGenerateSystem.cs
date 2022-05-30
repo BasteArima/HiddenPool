@@ -3,10 +3,14 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : BaseGameSystem
 {
+    public enum CardGenerateModes { Heroes, Items, HeroesAndItems }
+
     [SerializeField] private TMP_InputField _seedInput;
+    [SerializeField] private TMP_InputField _cardsCountInput;
     [SerializeField] private TMP_InputField _currentSeedOutput;
     [SerializeField] private CardBase _cardPrefab;
     [SerializeField] private Transform _contentParent;
@@ -17,6 +21,8 @@ public class CardsGenerateSystem : BaseGameSystem
     [SerializeField] private List<int> _randNumbers = new List<int>();
 
     [SerializeField] private Random.State _seed;
+
+    [SerializeField] private CardGenerateModes _cardGenerateMode = CardGenerateModes.Heroes;
 
     public bool MainCardIsLocked { get; private set; }
 
@@ -33,11 +39,13 @@ public class CardsGenerateSystem : BaseGameSystem
             .Subscribe(_ => EndGame());
     }
 
-    /// <summary>
-    /// Должен работать на хосте/сервере одинаково для всех создавать героев
-    /// </summary>
     public override void Initialize()
     {
+        if (string.IsNullOrEmpty(_cardsCountInput.text)) 
+            _cardsCountInput.text = _cardCount.ToString();
+        else if(int.Parse(_cardsCountInput.text) > 0)
+            _cardCount = int.Parse(_cardsCountInput.text);
+        
         if(_cardCount > data.heroesData.heroesSprites.Length)
         {
             Debug.LogError($"You want spawn cards more than you have sprites");
@@ -53,10 +61,21 @@ public class CardsGenerateSystem : BaseGameSystem
 
         for (int i = 0; i < _cardCount; i++)
         {
-            var heroData = data.heroesData.heroesSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
-            //var heroData = data.heroesData.heroes[Random.Range(0, data.heroesData.heroes.Length+1)];
+            Sprite heroData;
+            if(_cardGenerateMode == CardGenerateModes.Heroes)
+                heroData = data.heroesData.heroesSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
+            else if (_cardGenerateMode == CardGenerateModes.Items)
+                heroData = data.heroesData.itemsSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.itemsSprites.Length)];
+            else
+            {
+                List<Sprite> heroesAndItems = new List<Sprite>();
+                heroesAndItems.AddRange(data.heroesData.heroesSprites);
+                heroesAndItems.AddRange(data.heroesData.itemsSprites);
+
+                heroData = heroesAndItems[GetRandomNonRepetitiveNumber(0, heroesAndItems.Count)];
+            }
+
             var card = Instantiate(_cardPrefab, _contentParent);
-            //card.SetData(heroData.cardImage, heroData.name, heroData.attribute);
             card.SetData(this, heroData);
             _cards.Add(card);
         }
@@ -66,9 +85,11 @@ public class CardsGenerateSystem : BaseGameSystem
         data.matchData.state.Value = MatchData.State.Game;
     }
 
-    /// <summary>
-    /// Только на клиенте, возможно стоит вынести из инит метода и вынести в отдельный стейт
-    /// </summary>
+    public void SetGenerateMode(CardGenerateModes status = CardGenerateModes.Heroes)
+    {
+        _cardGenerateMode = status;
+    }
+
     public void ChoiseRandomCard()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
