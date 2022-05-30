@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HiddenPoolCoreMenu : BaseMenu
 {
@@ -13,11 +12,24 @@ public class HiddenPoolCoreMenu : BaseMenu
     [SerializeField] private Button _clearButton;
     [SerializeField] private Button _generateButton;
     [SerializeField] private Button _lockMainCardButton;
+    [SerializeField] private Button _helpControlsButton;
+    [SerializeField] private Button _modeButton;
 
     [Header("Lock")]
     [SerializeField] private Image _lockMainCardImg;
     [SerializeField] private Sprite _lockMainCardLockedSprite;
     [SerializeField] private Sprite _lockMainCardUnlockedSprite;
+
+    [Header("Common")]
+    [SerializeField] private GameObject _helpPanel;
+    [SerializeField] private Image _modeImage;
+    [SerializeField] private TMP_Text _modeText;
+    [SerializeField] private Sprite _heroesModeSprite;
+    [SerializeField] private Sprite _itemsModeSprite;
+    [SerializeField] private Sprite _heroesItemsModeSprite;
+
+    private int _modeBtnClickCount;
+
 
     private void OnEnable()
     {
@@ -26,6 +38,8 @@ public class HiddenPoolCoreMenu : BaseMenu
         _clearButton.onClick.AddListener(OnClearButton);
         _generateButton.onClick.AddListener(OnGenerateButton);
         _lockMainCardButton.onClick.AddListener(OnLockButton);
+        _helpControlsButton.onClick.AddListener(OnHelpControlsButton);
+        _modeButton.onClick.AddListener(OnGenerateModeButton);
     }
 
     public override void SetState(bool state)
@@ -35,6 +49,37 @@ public class HiddenPoolCoreMenu : BaseMenu
         {
             _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked ? _lockMainCardLockedSprite : _lockMainCardUnlockedSprite;
         }
+    }
+
+    private void OnGenerateModeButton()
+    {
+        _modeBtnClickCount++;
+
+        if (_modeBtnClickCount > System.Enum.GetNames(typeof(CardsGenerateSystem.CardGenerateModes)).Length - 1)
+            _modeBtnClickCount = 0;
+
+        if (_modeBtnClickCount == 0)
+        {
+            _modeImage.sprite = _heroesModeSprite;
+            _modeText.text = "Mode:\nHeroes";
+        }
+        else if(_modeBtnClickCount == 1)
+        {
+            _modeImage.sprite = _itemsModeSprite;
+            _modeText.text = "Mode:\nItems";
+        }
+        else if (_modeBtnClickCount == 2)
+        {
+            _modeImage.sprite = _heroesItemsModeSprite;
+            _modeText.text = "Mode:\nHeroes & Items";
+        }
+
+        _cardsGenerateSystem.SetGenerateMode((CardsGenerateSystem.CardGenerateModes)_modeBtnClickCount);
+    }
+
+    private void OnHelpControlsButton()
+    {
+        _helpPanel.SetActive(!_helpPanel.activeSelf);
     }
 
     private void OnGenerateButton()
@@ -49,6 +94,7 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnExitButton()
     {
+        _modeBtnClickCount = 0;
         data.matchData.state.Value = MatchData.State.EndGame;
         InterfaceManager.Toggle(MenuName.MainMenu);
     }
@@ -71,5 +117,7 @@ public class HiddenPoolCoreMenu : BaseMenu
         _clearButton.onClick.RemoveListener(OnClearButton);
         _generateButton.onClick.RemoveListener(OnGenerateButton);
         _lockMainCardButton.onClick.RemoveListener(OnLockButton);
+        _helpControlsButton.onClick.RemoveListener(OnHelpControlsButton);
+        _modeButton.onClick.RemoveListener(OnGenerateModeButton);
     }
 }
