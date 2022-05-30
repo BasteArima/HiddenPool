@@ -90,6 +90,8 @@ public class CardBase : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator ChoiseMainCard()
     {
+        if (_cardsGenerateSystem.MainCardIsLocked) yield break;
+
         _cardsGenerateSystem.SetMainCard(_cardImg.sprite);
         _choisedHoverImg.gameObject.SetActive(true);
         Tween myTween = _cardImg.DOColor(Color.green, _choiseCardColorSpeed);

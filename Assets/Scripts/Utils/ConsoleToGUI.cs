@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ConsoleToGUI : MonoBehaviour
 {
-    string myLog = "*begin log";
+    string myLog = "*begin log PRESS SPACE";
     string filename = "";
     bool doShow = false;
     int kChars = 700;
