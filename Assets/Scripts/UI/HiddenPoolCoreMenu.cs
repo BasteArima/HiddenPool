@@ -1,3 +1,4 @@
+using Assets.SimpleLocalization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -61,17 +62,17 @@ public class HiddenPoolCoreMenu : BaseMenu
         if (_modeBtnClickCount == 0)
         {
             _modeImage.sprite = _heroesModeSprite;
-            _modeText.text = "Mode:\nHeroes";
+            _modeText.text = LocalizationManager.Localize("HiddenPoolCore.ModeHeroes");
         }
         else if(_modeBtnClickCount == 1)
         {
             _modeImage.sprite = _itemsModeSprite;
-            _modeText.text = "Mode:\nItems";
+            _modeText.text =  LocalizationManager.Localize("HiddenPoolCore.ModeItems");
         }
         else if (_modeBtnClickCount == 2)
         {
             _modeImage.sprite = _heroesItemsModeSprite;
-            _modeText.text = "Mode:\nHeroes & Items";
+            _modeText.text = LocalizationManager.Localize("HiddenPoolCore.ModeHeroItems");
         }
 
         _cardsGenerateSystem.SetGenerateMode((CardsGenerateSystem.CardGenerateModes)_modeBtnClickCount);
