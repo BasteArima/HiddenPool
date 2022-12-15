@@ -5,9 +5,9 @@ HiddenPoolCore.Generate,Generate,Сгенерировать
 HiddenPoolCore.CardsCountPlaceholder,Cards count...,Количество карт...
 HiddenPoolCore.SeedPlaceholder,Seed...,Seed...
 HiddenPoolCore.Controls,Controls,Управление
-HiddenPoolCore.ModeHeroes,Mode:\nHeroes,Режим:\nГерои
-HiddenPoolCore.ModeItems,Mode:\nItems,Режим:\nПредметы
-HiddenPoolCore.ModeHeroItems,Mode:\nHeroes & Items,Режим:\nГерои и Предметы
+HiddenPoolCore.ModeHeroes,Mode:\nHeroes,Режим:<br>Герои
+HiddenPoolCore.ModeItems,Mode:\nItems,Режим:<br>Предметы
+HiddenPoolCore.ModeHeroItems,Mode:\nHeroes & Items,Режим:<br>Герои и Предметы
 HiddenPoolCore.HelpPanel,"LMB - mark the card
 Wheel - clear the card
 RMB - choise the card
