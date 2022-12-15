@@ -16,7 +16,6 @@ public class ChoiseGameMenu : BaseMenu
 
     public void OnHiddenPoolButton()
     {
-        //NetworkManager.Singleton.StartClient();
         data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
         InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
@@ -46,7 +45,6 @@ public class ChoiseGameMenu : BaseMenu
 
     public void OnCodeHeroButton()
     {
-        //NetworkManager.Singleton.StartClient();
         data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.CodeHero);
         InterfaceManager.Toggle(MenuName.CodeHeroCoreMenu);

@@ -31,6 +31,7 @@ public class InterfaceManager : BaseMonoSystem
     private void Start()
     {
         _versionText.text = Application.version;
+        SoundDesigner.PlaySound(SoundType.MainMenuLoop);
     }
 
     private void AddDataForAllBaseMenu()
@@ -64,5 +65,16 @@ public class InterfaceManager : BaseMonoSystem
         var baseMenu = _instance._menus.SingleOrDefault(m => m.Name == name);
         if (baseMenu == null) return false;
         return baseMenu.State;
+    }
+    
+    [SerializeField] private TMP_Text[] _texts;
+    [SerializeField] private TMP_FontAsset _font;
+
+    [ContextMenu("Test")]
+    private void Test()
+    {
+        _texts = FindObjectsOfType<TMP_Text>(true);
+        foreach (var text in _texts)
+            text.font = _font;
     }
 }
