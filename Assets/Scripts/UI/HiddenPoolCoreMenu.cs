@@ -10,6 +10,7 @@ public class HiddenPoolCoreMenu : BaseMenu
     [Header("Buttons")]
     [SerializeField] private Button _refreshMainCardButton;
     [SerializeField] private Button _exitButton;
+    [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _clearButton;
     [SerializeField] private Button _generateButton;
     [SerializeField] private Button _lockMainCardButton;
@@ -31,8 +32,7 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private int _modeBtnClickCount;
 
-
-    private void OnEnable()
+    private void Awake()
     {
         _refreshMainCardButton.onClick.AddListener(OnRefreshMainCardButton);
         _exitButton.onClick.AddListener(OnExitButton);
@@ -41,6 +41,7 @@ public class HiddenPoolCoreMenu : BaseMenu
         _lockMainCardButton.onClick.AddListener(OnLockButton);
         _helpControlsButton.onClick.AddListener(OnHelpControlsButton);
         _modeButton.onClick.AddListener(OnGenerateModeButton);
+        _pauseButton.onClick.AddListener(OnPauseButton);
     }
 
     public override void SetState(bool state)
@@ -78,6 +79,11 @@ public class HiddenPoolCoreMenu : BaseMenu
         _cardsGenerateSystem.SetGenerateMode((CardsGenerateSystem.CardGenerateModes)_modeBtnClickCount);
     }
 
+    private void OnPauseButton()
+    {
+        InterfaceManager.TurnOnOff(MenuName.PauseMenu, true);
+    }
+
     private void OnHelpControlsButton()
     {
         _helpPanel.SetActive(!_helpPanel.activeSelf);
@@ -109,16 +115,5 @@ public class HiddenPoolCoreMenu : BaseMenu
     {
         _cardsGenerateSystem.ToggleLockMainCard();
         _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked ? _lockMainCardLockedSprite : _lockMainCardUnlockedSprite;
-    }
-
-    private void OnDisable()
-    {
-        _refreshMainCardButton.onClick.RemoveListener(OnRefreshMainCardButton);
-        _exitButton.onClick.RemoveListener(OnExitButton);
-        _clearButton.onClick.RemoveListener(OnClearButton);
-        _generateButton.onClick.RemoveListener(OnGenerateButton);
-        _lockMainCardButton.onClick.RemoveListener(OnLockButton);
-        _helpControlsButton.onClick.RemoveListener(OnHelpControlsButton);
-        _modeButton.onClick.RemoveListener(OnGenerateModeButton);
     }
 }
