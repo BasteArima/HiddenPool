@@ -253,6 +253,7 @@ Transform:
   - {fileID: 6025020498233678119}
   - {fileID: 5733195910322823068}
   - {fileID: 6230404630273566399}
+  - {fileID: 7073792611165163378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -289,6 +290,7 @@ MonoBehaviour:
   - {fileID: 8919406889966127573}
   - {fileID: 6676443087400690139}
   - {fileID: 1260618357213809531}
+  - {fileID: 3343775852551821348}
 --- !u!1 &5007472601573969710
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae814bf10eb6a254a87cfcf99cc0fb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nonConsumableButtons: []
 --- !u!1 &5043974698873898682
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,3 +573,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameType: 7
+--- !u!1 &8898506931630820599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7073792611165163378}
+  - component: {fileID: 3343775852551821348}
+  m_Layer: 0
+  m_Name: AdsManagerSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7073792611165163378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898506931630820599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3183781492705905267}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3343775852551821348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898506931630820599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93204463d16d34440a0c38ed5f944390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adUnitId: R-M-DEMO-interstitial
