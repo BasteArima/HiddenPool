@@ -42,6 +42,7 @@ public class ChooseGameSystem : BaseMonoSystem
         var game = Instance._gameSystems.SingleOrDefault(m => m.GameType == Instance.matchData.game.Value);
         if (game == null) return;
         game.Initialize();
+        AdsManagerSystem.Instance.TryShowVideoAds();
     }
 
     public static void RestartGame()
