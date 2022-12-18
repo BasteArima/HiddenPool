@@ -4,3 +4,4 @@ Menu.Create,CREATE GAME,СОЗДАТЬ ИГРУ
 Menu.About,ABOUT,ОБ ИГРЕ
 Menu.Settings,SETTINGS,НАСТРОЙКИ
 Menu.Exit,QUIT,ВЫХОД
+Menu.RemoveAds,REMOVE ADS,УБРАТЬ РЕКЛАМУ
