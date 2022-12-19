@@ -7,7 +7,12 @@ using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : BaseGameSystem
 {
-    public enum CardGenerateModes { Heroes, Items, HeroesAndItems }
+    public enum CardGenerateModes
+    {
+        Heroes,
+        Items,
+        HeroesAndItems
+    }
 
     [SerializeField] private TMP_InputField _seedInput;
     [SerializeField] private TMP_InputField _cardsCountInput;
@@ -23,6 +28,18 @@ public class CardsGenerateSystem : BaseGameSystem
     [SerializeField] private Random.State _seed;
 
     [SerializeField] private CardGenerateModes _cardGenerateMode = CardGenerateModes.Heroes;
+
+    public string Seed
+    {
+        get => _seedInput.text;
+        set => _seedInput.text = value;
+    }
+
+    public string CardsCount
+    {
+        get => _cardsCountInput.text;
+        set => _cardsCountInput.text = value;
+    }
 
     public bool MainCardIsLocked { get; private set; }
 
@@ -41,12 +58,12 @@ public class CardsGenerateSystem : BaseGameSystem
 
     public override void Initialize()
     {
-        if (string.IsNullOrEmpty(_cardsCountInput.text)) 
+        if (string.IsNullOrEmpty(_cardsCountInput.text))
             _cardsCountInput.text = _cardCount.ToString();
-        else if(int.Parse(_cardsCountInput.text) > 0)
+        else if (int.Parse(_cardsCountInput.text) > 0)
             _cardCount = int.Parse(_cardsCountInput.text);
-        
-        if(_cardCount > data.heroesData.heroesSprites.Length)
+
+        if (_cardCount > data.heroesData.heroesSprites.Length)
         {
             Debug.LogError($"You want spawn cards more than you have sprites");
             data.matchData.state.Value = MatchData.State.EndGame;
@@ -55,17 +72,21 @@ public class CardsGenerateSystem : BaseGameSystem
 
         MainCardIsLocked = false;
 
-        if (!string.IsNullOrEmpty(_seedInput.text)) Random.InitState(int.Parse(_seedInput.text));
+        if (!string.IsNullOrEmpty(_seedInput.text))
+            Random.InitState(int.Parse(_seedInput.text));
+        
         _seed = Random.state;
         _currentSeedOutput.text = Random.seed.ToString();
 
         for (int i = 0; i < _cardCount; i++)
         {
             Sprite heroData;
-            if(_cardGenerateMode == CardGenerateModes.Heroes)
-                heroData = data.heroesData.heroesSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
+            if (_cardGenerateMode == CardGenerateModes.Heroes)
+                heroData = data.heroesData.heroesSprites[
+                    GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
             else if (_cardGenerateMode == CardGenerateModes.Items)
-                heroData = data.heroesData.itemsSprites[GetRandomNonRepetitiveNumber(0, data.heroesData.itemsSprites.Length)];
+                heroData = data.heroesData.itemsSprites[
+                    GetRandomNonRepetitiveNumber(0, data.heroesData.itemsSprites.Length)];
             else
             {
                 List<Sprite> heroesAndItems = new List<Sprite>();
@@ -142,9 +163,16 @@ public class CardsGenerateSystem : BaseGameSystem
         _randNumbers.Clear();
     }
 
+    public void RestartGameByClient()
+    {
+        ClearGame();
+        Initialize();
+    }
+
     public override void RestartGame()
     {
         ClearGame();
         Initialize();
+        FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
     }
 }

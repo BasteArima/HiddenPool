@@ -101,6 +101,7 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnExitButton()
     {
+        FirebaseController.Instance.RoomExit();
         _modeBtnClickCount = 0;
         data.matchData.state.Value = MatchData.State.EndGame;
         InterfaceManager.Toggle(MenuName.MainMenu);

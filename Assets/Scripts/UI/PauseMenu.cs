@@ -21,6 +21,7 @@ public class PauseMenu : BaseMenu
 
     public void OnGiveUpButton()
     {
+        FirebaseController.Instance.RoomExit();
         data.matchData.state.Value = MatchData.State.EndGame;
         InterfaceManager.Toggle(MenuName.MainMenu);
     }

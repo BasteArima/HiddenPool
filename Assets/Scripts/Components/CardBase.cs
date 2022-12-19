@@ -101,7 +101,7 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         seq.Append(_rectTransform.DOScale(1.1f, 0.08f));
         seq.Append(_rectTransform.DOScale(1f, 0.08f));
 
-        if (_timePointDown < _timePointFill)
+        if (_timePointDown < _pointDownTimeToStartChoice)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
                 OnCardClick();
