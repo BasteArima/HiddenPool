@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "QGDQB6SCOFY9VGD6",
         "name": "com.KatharsisGames.HiddenPool",
-        "processId": 1701,
+        "processId": 18845,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,18 @@
             "deviceId": "QGDQB6SCOFY9VGD6",
             "name": "com.KatharsisGames.HiddenPool",
             "processId": 1701,
+            "exited": true
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.android.vending",
+            "processId": 16484,
+            "exited": false
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPool",
+            "processId": 18845,
             "exited": false
         }
     ],
