@@ -1,7 +1,9 @@
 Key,English,Russian
-Menu.Find,PLAY,ИГРАТЬ
+Menu.Find,FIND GAME,НАЙТИ ИГРУ
 Menu.Create,CREATE GAME,СОЗДАТЬ ИГРУ
 Menu.About,ABOUT,ОБ ИГРЕ
 Menu.Settings,SETTINGS,НАСТРОЙКИ
 Menu.Exit,QUIT,ВЫХОД
 Menu.RemoveAds,REMOVE ADS,УБРАТЬ РЕКЛАМУ
+Menu.Codeplaceholder,Code...,Код...
+Menu.CodeTip,4 symbols,4 символа

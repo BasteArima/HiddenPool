@@ -11,7 +11,6 @@ public class BaseMenu : MonoBehaviour
 
     protected AppData data;
 
-
     public virtual void SetState(bool state)
     {
         _state = state;

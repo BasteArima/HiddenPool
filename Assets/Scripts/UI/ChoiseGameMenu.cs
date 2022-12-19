@@ -3,16 +3,8 @@ using UnityEngine;
 
 public class ChoiseGameMenu : BaseMenu
 {
-    private List<SoundType> _runeSoundTypes = new List<SoundType> { SoundType.RuneArcane, SoundType.RuneBounty, SoundType.RuneDD,
+    private readonly List<SoundType> _runeSoundTypes = new List<SoundType> { SoundType.RuneArcane, SoundType.RuneBounty, SoundType.RuneDD,
             SoundType.RuneHaste, SoundType.RuneInvisible, SoundType.RuneRegen, SoundType.RuneWater, SoundType.RuneIllusion };
-
-    public override void SetState(bool state)
-    {
-        base.SetState(state);
-        if (state)
-        {
-        }
-    }
 
     public void OnHiddenPoolButton()
     {
@@ -26,21 +18,6 @@ public class ChoiseGameMenu : BaseMenu
         var random = Random.Range(0, _runeSoundTypes.Count);
         Debug.Log("Random: " + random);
         SoundDesigner.PlaySound(_runeSoundTypes[random]);
-    }
-
-    public void OnTeaEyeWinnerButton()
-    {
-
-    }
-
-    public void OnShockContentButton()
-    {
-
-    }
-
-    public void OnMemeHistoryButton()
-    {
-
     }
 
     public void OnCodeHeroButton()

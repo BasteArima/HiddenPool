@@ -12,7 +12,7 @@ public class AdsManagerSystem : BaseMonoSystem
     private String message = "";
     private Interstitial interstitial;
 
-    public bool ShowAds { get; set; } = true;
+    public bool ShowAds { get; set; } = false;
     
     public override void Init(AppData data)
     {

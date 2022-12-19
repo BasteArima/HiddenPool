@@ -3,27 +3,39 @@
     "m_SelectedPackage": {
         "deviceId": "QGDQB6SCOFY9VGD6",
         "name": "com.KatharsisGames.HiddenPool",
-        "processId": 18845,
+        "processId": 2990,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.KatharsisGames.HiddenPool",
-            "processId": 1701,
-            "exited": true
-        },
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
             "name": "com.android.vending",
             "processId": 16484,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "QGDQB6SCOFY9VGD6",
             "name": "com.KatharsisGames.HiddenPool",
             "processId": 18845,
+            "exited": true
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPool",
+            "processId": 5478,
+            "exited": true
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPool",
+            "processId": 26192,
+            "exited": true
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPool",
+            "processId": 2990,
             "exited": false
         }
     ],

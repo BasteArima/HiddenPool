@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UniRx;
-using UnityEngine;
 
 public class ChooseGameSystem : BaseMonoSystem
 {
@@ -34,6 +31,11 @@ public class ChooseGameSystem : BaseMonoSystem
     {
         _gameSystems = FindObjectsOfType<BaseGameSystem>();
     }
+    
+    private static void EndGame()
+    {
+        Instance.matchData.game.Value = MatchData.MiniGames.None;
+    }
 
     public static void ChooseGame(MatchData.MiniGames gameType)
     {
@@ -50,10 +52,5 @@ public class ChooseGameSystem : BaseMonoSystem
         var game = Instance._gameSystems.SingleOrDefault(m => m.GameType == Instance.matchData.game.Value);
         if (game == null) return;
         game.RestartGame();
-    }
-
-    public static void EndGame()
-    {
-        Instance.matchData.game.Value = MatchData.MiniGames.None;
     }
 }
