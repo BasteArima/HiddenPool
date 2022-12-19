@@ -57,5 +57,7 @@ public class IAPSystem : BaseMonoSystem, IStoreListener
     public void OnPurchaseRemoveReward(Product product)
     {
         RemovePurchasedNonConsumableProducts();
+        Debug.Log("OnPurchaseRemoveReward");
+        AdsManagerSystem.Instance.ShowAds = false;
     }
 }

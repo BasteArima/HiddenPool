@@ -10,8 +10,9 @@ public class AdsManagerSystem : BaseMonoSystem
     [SerializeField] private string _adUnitId = "R-M-DEMO-interstitial";
     
     private String message = "";
-
     private Interstitial interstitial;
+
+    public bool ShowAds { get; set; } = true;
     
     public override void Init(AppData data)
     {
@@ -27,7 +28,7 @@ public class AdsManagerSystem : BaseMonoSystem
     public void TryShowVideoAds()
     {
 #if !UNITY_EDITOR
-        if (BuildConfig.Yandex_Ads)
+        if (BuildConfig.Yandex_Ads && ShowAds)
         {
             ShowInterstitial();
         }

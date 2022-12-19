@@ -16,3 +16,6 @@ Esc - pause","LMB - отметить карту
 RMB - выбрать карточку
 Esc - пауза"
 HiddenPoolCore.Pause,Pause,Пауза
+HiddenPoolCore.HowToPlay,How to play,Как играть
+HiddenPoolCore.SaySeedFriend,your friend must enter the same data for the same card generation,"ваш друг должен ввести такие же данные, для одинаковой генерации карт"
+HiddenPoolCore.CardsCount,Cards count,Количество карт
