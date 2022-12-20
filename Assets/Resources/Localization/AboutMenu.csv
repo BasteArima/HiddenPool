@@ -1,16 +1,7 @@
 Key,English,Russian
 AboutMenu.Back,BACK,НАЗАД
 AboutMenu.TitleAbout,About,Об игре
-AboutMenu.About,"Director: Midaser
-Author: Midaser
-Designer: Midaser
-Composer: Midaser
-Artist: Midaser
-Director: Midaser
-Code: Midaser","Директор: Midaser
-Автор: Midaser
-Дизайнер: Midaser
-Композитор: Midaser
-Художник: Midaser
-Режиссер: Midaser
-Код: Midaser"
+AboutMenu.Version,Version:,Версия:
+AboutMenu.Author,Author: Midaser,Автор: Midaser
+AboutMenu.Music,"Music: <link=""https://youtu.be/3MqYSgN9lMU""><color=#0028FF>LIVING PUFF</color></link>","Музыка: <link=""https://youtu.be/3MqYSgN9lMU""><color=#0028FF>LIVING PUFF</color></link>"
+AboutMenu.PrivacyPolicy,"<link=""http://katharsisgames.baste.ru/privacy_policy/privacy_policy_hidden_pool.html""><color=#0028FF>Privacy Policy</color></link>","<link=""http://katharsisgames.baste.ru/privacy_policy/privacy_policy_hidden_pool.html""><color=#0028FF>Политика Конфиденциальности</color></link>"
