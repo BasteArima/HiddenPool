@@ -4,8 +4,15 @@ using UnityEngine;
 
 public enum MenuName
 {
-    None, MainMenu, HiddenPoolCoreMenu, AboutMenu, SettingsMenu, ChoiseGameMenu, RunoMessCoreMenu, TeaEyeWinnerCoreMenu, ShockContentCoreMenu, MemeHistoryCoreMenu, MenuQuizCoreMenu, Locked1, Locked2, PauseMenu, CodeHeroCoreMenu, LobbyMenu
+    None = 0,
+    MainMenu = 1,
+    HiddenPoolCoreMenu = 2,
+    AboutMenu = 3,
+    SettingsMenu = 4,
+    PauseMenu = 5,
+    LobbyMenu = 6
 }
+
 public class InterfaceManager : BaseMonoSystem
 {
     private static InterfaceManager _instance;
@@ -66,7 +73,7 @@ public class InterfaceManager : BaseMonoSystem
         if (baseMenu == null) return false;
         return baseMenu.State;
     }
-    
+
     [SerializeField] private TMP_Text[] _texts;
     [SerializeField] private TMP_FontAsset _font;
 

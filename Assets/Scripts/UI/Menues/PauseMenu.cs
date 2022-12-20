@@ -1,25 +1,29 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : BaseMenu
 {
-    public void OnSettingsButton()
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private Button _exitButton;
+
+    private void Awake()
     {
-        //InterfaceManager.TurnOnOff(MenuName.PauseMenu, false);
-        //InterfaceManager.TurnOnOff(MenuName.SettingsMenu, true);
+        _continueButton.onClick.AddListener(OnContinueButton);
+        _exitButton.onClick.AddListener(OnExitToMenuButton);
     }
 
-    public void OnContinueButton()
+    private void OnContinueButton()
     {
         InterfaceManager.TurnOnOff(MenuName.PauseMenu, false);
     }
 
-    public void OnRestartButton()
+    private void OnRestartButton()
     {
         ChooseGameSystem.RestartGame();
         InterfaceManager.TurnOnOff(MenuName.PauseMenu, false);
     }
 
-    public void OnGiveUpButton()
+    private void OnExitToMenuButton()
     {
         FirebaseController.Instance.RoomExit();
         data.matchData.state.Value = MatchData.State.EndGame;

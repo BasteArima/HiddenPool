@@ -54,10 +54,10 @@ public class CardsGenerateSystem : BaseGameSystem
         else if (int.Parse(_cardsCountInput.text) > 0)
             _cardCount = int.Parse(_cardsCountInput.text);
 
-        if (_cardCount > data.heroesData.heroesSprites.Length)
+        if (_cardCount > data.packsData.heroesSprites.Length)
         {
-            Debug.LogError($"Player want spawn cards more than sprites");
-            _cardCount = data.heroesData.heroesSprites.Length;
+            Debug.Log($"Player want spawn cards more than sprites");
+            _cardCount = data.packsData.heroesSprites.Length;
             _cardsCountInput.text = _cardCount.ToString();
         }
 
@@ -71,8 +71,8 @@ public class CardsGenerateSystem : BaseGameSystem
 
         for (int i = 0; i < _cardCount; i++)
         {
-            var heroData = data.heroesData.heroesSprites[
-                    GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
+            var heroData = data.packsData.heroesSprites[
+                    GetRandomNonRepetitiveNumber(0, data.packsData.heroesSprites.Length)];
 
             var card = Instantiate(_cardPrefab, _contentParent);
             card.SetData(this, heroData);

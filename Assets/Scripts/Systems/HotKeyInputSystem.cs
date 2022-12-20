@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HotKeyInputSystem : BaseMonoSystem
@@ -9,7 +7,6 @@ public class HotKeyInputSystem : BaseMonoSystem
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!InterfaceManager.GetMenuActive(MenuName.MainMenu) 
-                && !InterfaceManager.GetMenuActive(MenuName.ChoiseGameMenu)
                 && !InterfaceManager.GetMenuActive(MenuName.AboutMenu)
                 && !InterfaceManager.GetMenuActive(MenuName.SettingsMenu)
                 && !InterfaceManager.GetMenuActive(MenuName.LobbyMenu)

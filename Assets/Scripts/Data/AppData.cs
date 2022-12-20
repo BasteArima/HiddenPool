@@ -5,5 +5,5 @@ public class AppData : ScriptableObject
 {
     public UserData userData;
     public MatchData matchData;
-    public HeroesData heroesData;
+    public PacksData packsData;
 }

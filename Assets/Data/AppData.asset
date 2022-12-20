@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: AppData
   m_EditorClassIdentifier: 
   userData: {fileID: 11400000, guid: fd50ae2c3189c9649ac2896b2df77ac4, type: 2}
-  localizationData: {fileID: 11400000, guid: 80e491683fab9fc4fb73eeda4d007570, type: 2}
   matchData: {fileID: 11400000, guid: 1b3a2b5e436e4294aaf912d7c5378b73, type: 2}
-  heroesData: {fileID: 11400000, guid: 2c3c60745184a7c46aa3ec842d42970e, type: 2}
+  packsData: {fileID: 11400000, guid: 2c3c60745184a7c46aa3ec842d42970e, type: 2}

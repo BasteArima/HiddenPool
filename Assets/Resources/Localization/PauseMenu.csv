@@ -1,6 +1,5 @@
 Key,English,Russian
 PauseMenu.PauseTitle,PAUSE,ПАУЗА
 PauseMenu.Continue,Continue,Продолжить
-PauseMenu.Settings,Settings,Настройки
 PauseMenu.Restart,Restart,Рестарт
-PauseMenu.GiveUp,Give Up,Сдаться
+PauseMenu.GiveUp,Main Menu,Выход в меню

@@ -32,5 +32,5 @@
     Silenced,
     SunStrike,
     TechiesMine,
-
+    Midas
 }
