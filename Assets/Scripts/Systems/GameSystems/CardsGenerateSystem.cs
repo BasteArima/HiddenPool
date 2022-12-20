@@ -7,13 +7,6 @@ using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : BaseGameSystem
 {
-    public enum CardGenerateModes
-    {
-        Heroes,
-        Items,
-        HeroesAndItems
-    }
-
     [SerializeField] private TMP_InputField _seedInput;
     [SerializeField] private TMP_InputField _cardsCountInput;
     [SerializeField] private TMP_InputField _currentSeedOutput;
@@ -26,8 +19,6 @@ public class CardsGenerateSystem : BaseGameSystem
     [SerializeField] private List<int> _randNumbers = new List<int>();
 
     [SerializeField] private Random.State _seed;
-
-    [SerializeField] private CardGenerateModes _cardGenerateMode = CardGenerateModes.Heroes;
 
     public string Seed
     {
@@ -65,9 +56,9 @@ public class CardsGenerateSystem : BaseGameSystem
 
         if (_cardCount > data.heroesData.heroesSprites.Length)
         {
-            Debug.LogError($"You want spawn cards more than you have sprites");
-            data.matchData.state.Value = MatchData.State.EndGame;
-            return;
+            Debug.LogError($"Player want spawn cards more than sprites");
+            _cardCount = data.heroesData.heroesSprites.Length;
+            _cardsCountInput.text = _cardCount.ToString();
         }
 
         MainCardIsLocked = false;
@@ -80,21 +71,8 @@ public class CardsGenerateSystem : BaseGameSystem
 
         for (int i = 0; i < _cardCount; i++)
         {
-            Sprite heroData;
-            if (_cardGenerateMode == CardGenerateModes.Heroes)
-                heroData = data.heroesData.heroesSprites[
+            var heroData = data.heroesData.heroesSprites[
                     GetRandomNonRepetitiveNumber(0, data.heroesData.heroesSprites.Length)];
-            else if (_cardGenerateMode == CardGenerateModes.Items)
-                heroData = data.heroesData.itemsSprites[
-                    GetRandomNonRepetitiveNumber(0, data.heroesData.itemsSprites.Length)];
-            else
-            {
-                List<Sprite> heroesAndItems = new List<Sprite>();
-                heroesAndItems.AddRange(data.heroesData.heroesSprites);
-                heroesAndItems.AddRange(data.heroesData.itemsSprites);
-
-                heroData = heroesAndItems[GetRandomNonRepetitiveNumber(0, heroesAndItems.Count)];
-            }
 
             var card = Instantiate(_cardPrefab, _contentParent);
             card.SetData(this, heroData);
@@ -104,11 +82,6 @@ public class CardsGenerateSystem : BaseGameSystem
         ChoiseRandomCard();
 
         data.matchData.state.Value = MatchData.State.Game;
-    }
-
-    public void SetGenerateMode(CardGenerateModes status = CardGenerateModes.Heroes)
-    {
-        _cardGenerateMode = status;
     }
 
     public void ChoiseRandomCard()
@@ -173,6 +146,7 @@ public class CardsGenerateSystem : BaseGameSystem
     {
         ClearGame();
         Initialize();
-        FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
+        if(FirebaseController.Instance.Initialized)
+            FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
     }
 }

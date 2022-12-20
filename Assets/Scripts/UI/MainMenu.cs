@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class MainMenu : BaseMenu
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _exitButton;
     [SerializeField] private TMP_InputField _findGameCodeInput;
+    [SerializeField] private TMP_InputField _nickNameInput;
 
     private void Awake()
     {
@@ -19,21 +21,24 @@ public class MainMenu : BaseMenu
         _settingsButton.onClick.AddListener(OnSettingsButton);
         _exitButton.onClick.AddListener(OnExitGameButton);
         _findGameCodeInput.onValueChanged.AddListener(OnFindGameCodeValueChanged);
+        _nickNameInput.onValueChanged.AddListener(OnNicknameInputValueChanged);
         _findGameCodeInput.onValueChanged.Invoke("");
+    }
+
+    private void Start()
+    {
+        _nickNameInput.text = data.userData.userName.Value;
     }
 
     private void OnHostButton()
     {
-        //data.matchData.state.Value = MatchData.State.Lobby;
-        //InterfaceManager.Toggle(MenuName.LobbyMenu);
-
         FirebaseController.Instance.CreateGame();
     }
 
     private void OnFindGameButton()
     {
-        FirebaseController.Instance.JoinGame(_findGameCodeInput.text);
-        //InterfaceManager.Toggle(MenuName.ChoiseGameMenu);
+        if (!FirebaseController.Instance.Initialized) return;
+            FirebaseController.Instance.JoinGame(_findGameCodeInput.text.ToUpper());
     }
 
     private void OnAboutButton()
@@ -57,5 +62,11 @@ public class MainMenu : BaseMenu
             _findGameButton.interactable = false;
         else
             _findGameButton.interactable = true;
+    }
+    
+    private void OnNicknameInputValueChanged(string value)
+    {
+        data.userData.userName.Value = value;
+        SaveDataSystem.Instance.SaveData();
     }
 }
