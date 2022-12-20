@@ -18,6 +18,7 @@ public class FirebaseController : BaseMonoSystem
     private bool _playerOneNull = true;
     private bool _playerTwoNull = true;
 
+    public bool Initialized { get; private set; }
     public string RoomCode { get; private set; }
 
     public override void Init(AppData data)
@@ -34,11 +35,13 @@ public class FirebaseController : BaseMonoSystem
             {
                 _app = FirebaseApp.DefaultInstance;
                 _dbRef = FirebaseDatabase.DefaultInstance.RootReference.Child("gamerooms");
+                Initialized = true;
             }
             else
             {
                 Debug.LogError(System.String.Format(
                     "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                Initialized = false;
             }
         });
     }
@@ -62,6 +65,8 @@ public class FirebaseController : BaseMonoSystem
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
         InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
 
+        if (!Initialized) return;
+        
         RoomCode = GetRandomRoomCode();
         _gameCodeText.text = RoomCode;
         CreateRoomOnDatabase(_cardsGenerateSystem.Seed, _cardsGenerateSystem.CardsCount);
@@ -92,7 +97,7 @@ public class FirebaseController : BaseMonoSystem
         }
 
         var room = new GameRoom(seed, cardsCount);
-        room.player1 = SystemInfo.deviceUniqueIdentifier;
+        room.player1 = data.userData.userName.Value;
         _isPlayerOne = true;
         _playerOneNull = false;
         var json = JsonUtility.ToJson(room);
@@ -126,14 +131,14 @@ public class FirebaseController : BaseMonoSystem
 
                 if (string.IsNullOrEmpty(room.player1))
                 {
-                    room.player1 = SystemInfo.deviceUniqueIdentifier;
+                    room.player1 = data.userData.userName.Value;
                     _dbRef.Child(RoomCode).Child("player1").SetValueAsync(room.player1);
                     _isPlayerOne = true;
                     _playerOneNull = false;
                 }
                 else if (string.IsNullOrEmpty(room.player2))
                 {
-                    room.player2 = SystemInfo.deviceUniqueIdentifier;
+                    room.player2 = data.userData.userName.Value;
                     _dbRef.Child(RoomCode).Child("player2").SetValueAsync(room.player2);
                     _isPlayerOne = false;
                     _playerTwoNull = false;

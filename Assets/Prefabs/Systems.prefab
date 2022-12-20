@@ -88,6 +88,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80356e7a779f55d43853d99ab35096ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1804732924872580458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8015599054842216310}
+  - component: {fileID: 8179901656382265952}
+  m_Layer: 0
+  m_Name: SaveDataSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8015599054842216310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804732924872580458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3183781492705905267}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8179901656382265952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804732924872580458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65f002265f0b34590d9320d48b2e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _userName: 
+  _sessionsCount: 0
+  _coins: 0
+  _amountWins: 0
 --- !u!1 &2895549145457654031
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardsGenerateSystem: {fileID: 5039587711673252349}
+  _gameCodeText: {fileID: 0}
 --- !u!1 &3886749590762450819
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +349,7 @@ Transform:
   - {fileID: 6230404630273566399}
   - {fileID: 7073792611165163378}
   - {fileID: 8956355052238566902}
+  - {fileID: 8015599054842216310}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -338,6 +388,7 @@ MonoBehaviour:
   - {fileID: 1260618357213809531}
   - {fileID: 3343775852551821348}
   - {fileID: 5368268652007168932}
+  - {fileID: 8179901656382265952}
 --- !u!1 &5007472601573969710
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +448,6 @@ MonoBehaviour:
     s1: 0
     s2: 0
     s3: 0
-  _cardGenerateMode: 0
 --- !u!1 &5027090532535300171
 GameObject:
   m_ObjectHideFlags: 0

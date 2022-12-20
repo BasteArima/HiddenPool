@@ -23,11 +23,9 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 
     [Header("Elements")]
     [SerializeField] private Image _cardImg;
-    [SerializeField] private Image _cardAttribute;
     [SerializeField] private TMP_Text _cardName;
-    [SerializeField] private Sprite[] _attributeSprites;
-
     [SerializeField] private CardStatuses _cardStatus = CardStatuses.None;
+    
     private int _clickCount = 0;
     private CardsGenerateSystem _cardsGenerateSystem;
     private RectTransform _rectTransform;
@@ -42,21 +40,11 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         _rectTransform = GetComponent<RectTransform>();
     }
 
-    public void SetData(CardsGenerateSystem cardGenSystem, Sprite cardSprite, string cardName = "", AttributeTypes heroAtribute = AttributeTypes.None)
+    public void SetData(CardsGenerateSystem cardGenSystem, Sprite cardSprite, string cardName = "")
     {
         _cardsGenerateSystem = cardGenSystem;
         _cardImg.sprite = cardSprite;
         _cardName.text = cardName;
-        SetHeroAttribute(heroAtribute);
-    }
-
-    private void SetHeroAttribute(AttributeTypes heroAtribute)
-    {
-        if (heroAtribute == AttributeTypes.None) return;
-        
-        _cardAttribute.gameObject.SetActive(true);
-
-        _cardAttribute.sprite = _attributeSprites[(int)heroAtribute + 1];
     }
 
     private void Update()
@@ -71,8 +59,8 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             _choisingHoverImg.fillAmount = _timePointFill / _pointDownTimeToChoice;
             if (_timePointFill >= _pointDownTimeToChoice)
             {
-                var pointer = new PointerEventData(EventSystem.current);
-                ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerUpHandler); // [TODO] Fix double event
+                //var pointer = new PointerEventData(EventSystem.current);
+                //ExecuteEvents.Execute(gameObject, pointer, ExecuteEvents.pointerUpHandler); // [TODO] Fix double event
                 ChooseOpponentCard();
             }
         }
@@ -81,6 +69,11 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     private void ChooseOpponentCard() // [TODO] Add logic for multiplayer
     {
         Debug.Log($"ChooseOpponentCard");
+        _pointDown = false;
+        _choisingHoverImg.gameObject.SetActive(false);
+        _choisingHoverImg.fillAmount = 0;
+        _timePointDown = 0;
+        _timePointFill = 0;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -95,6 +88,8 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         _pointDown = false;
         _choisingHoverImg.gameObject.SetActive(false);
         _choisingHoverImg.fillAmount = 0;
+        _timePointDown = 0;
+        _timePointFill = 0;
         
         var seq = DOTween.Sequence();
         seq.SetUpdate(true);
@@ -110,14 +105,16 @@ public class CardBase : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             else if (eventData.button == PointerEventData.InputButton.Right)
                 StartCoroutine(ChoiceMainCard());
         }
-
-        _timePointDown = 0;
-        _timePointFill = 0;
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        Debug.Log($"OnPointerClick");
+        _pointDown = false;
+        _choisingHoverImg.gameObject.SetActive(false);
+        _choisingHoverImg.fillAmount = 0;
+        _timePointDown = 0;
+        _timePointFill = 0;
     }
 
     private void OnCardClick()
