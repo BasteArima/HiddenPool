@@ -4,9 +4,4 @@ public class LobbyMenu : BaseMenu
     {
         InterfaceManager.Toggle(MenuName.MainMenu);
     }
-
-    public void OnClientButton()
-    {
-        InterfaceManager.Toggle(MenuName.ChoiseGameMenu);
-    }
 }

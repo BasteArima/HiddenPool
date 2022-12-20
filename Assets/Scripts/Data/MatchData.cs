@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UniRx;
 
 [CreateAssetMenu(menuName = "Data/MatchData")]
@@ -15,19 +13,12 @@ public class MatchData : ScriptableObject
         InitializeGame,
         Game,
         EndGame,
-        Finish,
     }
 
     public enum MiniGames
     {
         None,
-        HiddenPool,
-        RunoMess,
-        TeaEyeWinner,
-        ShockContent,
-        MemeHistory,
-        MenuQuiz,
-        CodeHero
+        HiddenPool
     }
 
     public ReactiveProperty<State> state = new ReactiveProperty<State>(State.None);
