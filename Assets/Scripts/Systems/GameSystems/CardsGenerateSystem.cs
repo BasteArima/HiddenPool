@@ -7,19 +7,21 @@ using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : BaseGameSystem
 {
+    [SerializeField] private CardBase _cardPrefab;
+    [SerializeField] private Transform _contentParent;
+    
+    [SerializeField] private Image _choisedCard;
+    
     [SerializeField] private TMP_InputField _seedInput;
     [SerializeField] private TMP_InputField _cardsCountInput;
     [SerializeField] private TMP_InputField _currentSeedOutput;
-    [SerializeField] private CardBase _cardPrefab;
-    [SerializeField] private Transform _contentParent;
-    [SerializeField] private int _cardCount;
-    [SerializeField] private Image _choisedCard;
-
-    [SerializeField] private List<CardBase> _cards = new List<CardBase>();
-    [SerializeField] private List<int> _randNumbers = new List<int>();
 
     [SerializeField] private Random.State _seed;
 
+    private List<CardBase> _cards = new List<CardBase>();
+    private List<int> _randNumbers = new List<int>();
+    private int _cardCount = 40;
+    
     public string Seed
     {
         get => _seedInput.text;

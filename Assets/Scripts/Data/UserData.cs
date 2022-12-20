@@ -5,6 +5,7 @@ using UniRx;
 public class UserData : ScriptableObject
 {
     public StringReactiveProperty userName;
+    public Texture2D userAvatar;
     public IntReactiveProperty sessionsCount;
     public IntReactiveProperty coins;
     public IntReactiveProperty wins;

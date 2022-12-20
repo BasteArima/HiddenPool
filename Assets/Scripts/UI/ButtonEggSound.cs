@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ButtonEggSound : MonoBehaviour, IPointerClickHandler
 {
-    public enum EggPlaySoundInteractables
+    private enum EggPlaySoundInteractables
     {
         Interactable,
         NotInteractable,

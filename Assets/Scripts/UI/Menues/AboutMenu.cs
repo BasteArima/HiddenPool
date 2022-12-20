@@ -1,14 +1,14 @@
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AboutMenu : BaseMenu
 {
-    public override void SetState(bool state)
+    [SerializeField] private TMP_Text _versionText;
+
+    public override void SetData(AppData data)
     {
-        base.SetState(state);
-        if (state)
-        {
-        }
+        base.SetData(data);
+        _versionText.text = Application.version;
     }
 
     public void OnBackButton()
