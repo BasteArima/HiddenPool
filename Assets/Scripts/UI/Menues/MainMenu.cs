@@ -24,13 +24,18 @@ public class MainMenu : BaseMenu
 
     private void OnHostButton()
     {
-        FirebaseController.Instance.CreateGame();
+        data.matchData.state.Value = MatchData.State.InitializeGame;
+        ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
+        InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
+        
+        if (FirebaseController.Instance.Initialized)
+            FirebaseController.Instance.CreateRoom();
     }
 
     private void OnFindGameButton()
     {
         if (!FirebaseController.Instance.Initialized) return;
-            FirebaseController.Instance.JoinGame(_findGameCodeInput.text.ToUpper());
+            FirebaseController.Instance.JoinRoom(_findGameCodeInput.text.ToUpper());
     }
 
     private void OnAboutButton()
