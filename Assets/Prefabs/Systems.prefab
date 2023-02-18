@@ -230,66 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f55194c5b5e28e46b9af60afb959c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerOneJoined:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2974756429593574314}
-        m_TargetAssemblyTypeName: RoomPlayerBannersController, Assembly-CSharp
-        m_MethodName: OnPlayerOneJoined
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  PlayerTwoJoined:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2974756429593574314}
-        m_TargetAssemblyTypeName: RoomPlayerBannersController, Assembly-CSharp
-        m_MethodName: OnPlayerTwoJoined
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  PlayerOneExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2974756429593574314}
-        m_TargetAssemblyTypeName: RoomPlayerBannersController, Assembly-CSharp
-        m_MethodName: OnPlayerOneExit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  PlayerTwoExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2974756429593574314}
-        m_TargetAssemblyTypeName: RoomPlayerBannersController, Assembly-CSharp
-        m_MethodName: OnPlayerTwoExit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   _cardsGenerateSystem: {fileID: 5039587711673252349}
   _gameCodeText: {fileID: 0}
   _dbLink: https://hiddenpool-default-rtdb.europe-west1.firebasedatabase.app/

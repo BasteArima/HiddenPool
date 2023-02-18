@@ -44,12 +44,13 @@ public class PlayerProfileController : BaseMonoSystem
             tex.LoadImage(fileData); //..this will auto-resize the texture dimensions.
         }
         
-        //var bytes = tex.EncodeToPNG();
+        var bytes = tex.EncodeToPNG();
         var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
         _playerAvatarImage.overrideSprite = sprite;
 
         data.userData.userSprite = sprite;
         data.userData.userAvatar = tex;
+        data.userData.userAvatarBytes = bytes;
     }
 
     private void OnNicknameInputValueChanged(string value)

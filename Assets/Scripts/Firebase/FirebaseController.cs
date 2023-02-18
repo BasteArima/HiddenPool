@@ -1,18 +1,18 @@
+using System;
 using Firebase;
 using Firebase.Database;
 using Firebase.Extensions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class FirebaseController : BaseMonoSystem
 {
     public static FirebaseController Instance;
 
-    public UnityEvent<string> PlayerOneJoined;
-    public UnityEvent<string> PlayerTwoJoined;
-    public UnityEvent PlayerOneExit;
-    public UnityEvent PlayerTwoExit;
+    public event Action<string, byte[]> PlayerOneJoined;
+    public event Action<string, byte[]> PlayerTwoJoined;
+    public event Action PlayerOneExit;
+    public event Action PlayerTwoExit;
 
     [SerializeField] private CardsGenerateSystem _cardsGenerateSystem;
     [SerializeField] private TMP_Text _gameCodeText;
@@ -134,13 +134,14 @@ public class FirebaseController : BaseMonoSystem
 
         var room = new GameRoom(seed, cardsCount)
         {
-            player1 = data.userData.userName.Value
+            player1 = data.userData.userName.Value,
+            player1avatar = data.userData.userAvatarBytes
         };
-        
-        PlayerOneJoined?.Invoke(room.player1);
+
+        PlayerOneJoined?.Invoke(room.player1, room.player1avatar);
         _isPlayerOne = true;
         _playerOneNull = false;
-        
+
         var json = JsonUtility.ToJson(room);
         _gameRoomRef.Child(_roomCode).SetRawJsonValueAsync(json);
         _gameRoomRef.Child(_roomCode).Child("seed").ValueChanged += OnSeedValueChanged;
@@ -173,6 +174,8 @@ public class FirebaseController : BaseMonoSystem
                 if (string.IsNullOrEmpty(room.player1))
                 {
                     _gameRoomRef.Child(_roomCode).Child("player1").SetValueAsync(data.userData.userName.Value);
+                    _gameRoomRef.Child(_roomCode).Child("player1avatar").SetValueAsync(data.userData.userAvatarBytes);
+
                     _isPlayerOne = true;
                     _playerOneNull = false;
                     if (string.IsNullOrEmpty(room.player2))
@@ -182,12 +185,14 @@ public class FirebaseController : BaseMonoSystem
                     else
                     {
                         _playerTwoNull = false;
-                        PlayerTwoJoined?.Invoke(room.player2);
+                        PlayerTwoJoined?.Invoke(room.player2, room.player2avatar);
                     }
                 }
                 else if (string.IsNullOrEmpty(room.player2))
                 {
                     _gameRoomRef.Child(_roomCode).Child("player2").SetValueAsync(data.userData.userName.Value);
+                    _gameRoomRef.Child(_roomCode).Child("player2avatar").SetValueAsync(data.userData.userAvatarBytes);
+
                     _isPlayerOne = false;
                     _playerTwoNull = false;
                     if (string.IsNullOrEmpty(room.player1))
@@ -197,7 +202,7 @@ public class FirebaseController : BaseMonoSystem
                     else
                     {
                         _playerOneNull = false;
-                        PlayerOneJoined?.Invoke(room.player1);
+                        PlayerOneJoined?.Invoke(room.player1, room.player1avatar);
                     }
                 }
 
@@ -257,7 +262,7 @@ public class FirebaseController : BaseMonoSystem
             Debug.LogError(e.DatabaseError.Message);
             return;
         }
-        
+
         var snapshot = e.Snapshot;
 
         if (string.IsNullOrEmpty(snapshot.Value.ToString())) // player one left
@@ -266,9 +271,9 @@ public class FirebaseController : BaseMonoSystem
         }
         else // player one joined
         {
-            PlayerOneJoined?.Invoke(snapshot.Value.ToString());
+            PlayerOneJoined?.Invoke(snapshot.Value.ToString(), GetPlayerAvatar(true));
         }
-        
+
         _playerOneNull = string.IsNullOrEmpty(snapshot.Value.ToString());
         if (_playerOneNull && _playerTwoNull)
             DeleteRoom();
@@ -281,7 +286,7 @@ public class FirebaseController : BaseMonoSystem
             Debug.LogError(e.DatabaseError.Message);
             return;
         }
-        
+
         var snapshot = e.Snapshot;
 
         if (string.IsNullOrEmpty(snapshot.Value.ToString())) // player two left
@@ -290,7 +295,7 @@ public class FirebaseController : BaseMonoSystem
         }
         else // player two joined
         {
-            PlayerTwoJoined?.Invoke(snapshot.Value.ToString());
+            PlayerTwoJoined?.Invoke(snapshot.Value.ToString(), GetPlayerAvatar(false));
         }
 
         _playerTwoNull = string.IsNullOrEmpty(snapshot.Value.ToString());
@@ -298,18 +303,50 @@ public class FirebaseController : BaseMonoSystem
             DeleteRoom();
     }
 
+    private byte[] GetPlayerAvatar(bool playerOne)
+    {
+        byte[] avatar = null;
+        _gameRoomRef.Child(_roomCode).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.LogError($"Failed get values from database by code: {_roomCode}");
+                return;
+            }
+
+            if (task.IsCompleted)
+            {
+                var snapshot = task.Result;
+                var room = JsonUtility.FromJson<GameRoom>(snapshot.GetRawJsonValue());
+
+                if (playerOne)
+                    avatar = room.player1avatar;
+                else
+                    avatar = room.player2avatar;
+            }
+            else
+            {
+                Debug.LogError($"JoinGame error");
+            }
+        });
+        return avatar;
+    }
+
     public void RoomExit()
     {
+        UnsubscribeAllRoomChilds();
+
         if (_isPlayerOne)
             _gameRoomRef.Child(_roomCode).Child("player1").SetValueAsync("");
         else
             _gameRoomRef.Child(_roomCode).Child("player2").SetValueAsync("");
 
-        UnsubscribeAllRoomChilds();
-
         _isPlayerOne = false;
         _playerOneNull = true;
         _playerTwoNull = true;
+
+        if (_playerOneNull && _playerTwoNull)
+            DeleteRoom();
     }
 
     public void UpdateRoomValuesOnDb(string seed, int cardsCount)
@@ -355,13 +392,15 @@ public class FirebaseController : BaseMonoSystem
     #endregion
 }
 
-[System.Serializable]
+[Serializable]
 public class GameRoom
 {
     public string seed;
     public string cardsCount;
     public string player1;
     public string player2;
+    public byte[] player1avatar;
+    public byte[] player2avatar;
 
     public GameRoom()
     {

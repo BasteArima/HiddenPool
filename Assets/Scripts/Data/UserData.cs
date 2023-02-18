@@ -6,6 +6,7 @@ public class UserData : ScriptableObject
 {
     public StringReactiveProperty userName;
     public Texture2D userAvatar;
+    public byte[] userAvatarBytes;
     public Sprite userSprite;
     public IntReactiveProperty sessionsCount;
     public IntReactiveProperty coins;
