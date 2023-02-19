@@ -81,12 +81,12 @@ public class CardsGenerateSystem : BaseGameSystem
             _cards.Add(card);
         }
 
-        ChoiseRandomCard();
+        ChoiceRandomCard();
 
         data.matchData.state.Value = MatchData.State.Game;
     }
 
-    public void ChoiseRandomCard()
+    public void ChoiceRandomCard()
     {
         Random.InitState((int)System.DateTime.Now.Ticks);
         _choisedCard.sprite = _cards[Random.Range(0, _cards.Count)].CardSprite;
@@ -148,7 +148,10 @@ public class CardsGenerateSystem : BaseGameSystem
     {
         ClearGame();
         Initialize();
-        if(FirebaseController.Instance.Initialized)
-            FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
+        
+        
+        
+        //if(FirebaseController.Instance.Initialized)
+        //    FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
     }
 }

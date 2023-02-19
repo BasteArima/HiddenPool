@@ -17,16 +17,9 @@ public class PauseMenu : BaseMenu
         InterfaceManager.TurnOnOff(MenuName.PauseMenu, false);
     }
 
-    private void OnRestartButton()
-    {
-        ChooseGameSystem.RestartGame();
-        InterfaceManager.TurnOnOff(MenuName.PauseMenu, false);
-    }
-
     private void OnExitToMenuButton()
     {
-        FirebaseController.Instance.RoomExit();
-        data.matchData.state.Value = MatchData.State.EndGame;
-        InterfaceManager.Toggle(MenuName.MainMenu);
+        CustomNetworkManager.Instance.StopHost();
+        //FirebaseController.Instance.RoomExit();
     }
 }
