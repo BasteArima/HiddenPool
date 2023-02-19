@@ -1,11 +1,11 @@
-using Assets.SimpleLocalization;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using Mirror;
 
 public class HiddenPoolCoreMenu : BaseMenu
 {
     [SerializeField] private CardsGenerateSystem _cardsGenerateSystem;
+    [SerializeField] private ChooseGameNetworkManager _chooseGameNetworkManager;
 
     [Header("Buttons")]
     [SerializeField] private Button _refreshMainCardButton;
@@ -40,7 +40,9 @@ public class HiddenPoolCoreMenu : BaseMenu
         base.SetState(state);
         if (state)
         {
-            _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked ? _lockMainCardLockedSprite : _lockMainCardUnlockedSprite;
+            _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked
+                ? _lockMainCardLockedSprite
+                : _lockMainCardUnlockedSprite;
         }
     }
 
@@ -56,7 +58,9 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnGenerateButton()
     {
-        _cardsGenerateSystem.RestartGame();
+        _chooseGameNetworkManager.ChangeGameOptions();
+
+        //_cardsGenerateSystem.RestartGame();
     }
 
     private void OnClearButton()
@@ -66,19 +70,29 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnExitButton()
     {
-        FirebaseController.Instance.RoomExit();
+        //FirebaseController.Instance.RoomExit();
+
+        if (NetworkServer.active && NetworkClient.isConnected)
+            NetworkManager.singleton.StopHost();
+        else if (NetworkClient.isConnected)
+            NetworkManager.singleton.StopClient();
+        else if (NetworkServer.active)
+            NetworkManager.singleton.StopServer();
+
         data.matchData.state.Value = MatchData.State.EndGame;
         InterfaceManager.Toggle(MenuName.MainMenu);
     }
 
     private void OnRefreshMainCardButton()
     {
-        _cardsGenerateSystem.ChoiseRandomCard();
+        _cardsGenerateSystem.ChoiceRandomCard();
     }
 
     private void OnLockButton()
     {
         _cardsGenerateSystem.ToggleLockMainCard();
-        _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked ? _lockMainCardLockedSprite : _lockMainCardUnlockedSprite;
+        _lockMainCardImg.sprite = _cardsGenerateSystem.MainCardIsLocked
+            ? _lockMainCardLockedSprite
+            : _lockMainCardUnlockedSprite;
     }
 }

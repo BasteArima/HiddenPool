@@ -9,19 +9,18 @@ public class RoomAvatarBanner : MonoBehaviour
     [SerializeField] private TMP_Text _userName;
 
     public RectTransform Rect => _rectTransform;
+    public bool isOpened { get; set; }
     
-    public void SetUserData(string name, byte[] avatar = null)
+    public void SetUserData(string name, Texture2D avatar = null)
     {
         _userName.text = name;
         if(null != avatar)
             _avatarImage.overrideSprite = GetSpriteFromBytes(avatar);
     }
 
-    private Sprite GetSpriteFromBytes(byte[] avatar)
+    private Sprite GetSpriteFromBytes(Texture2D avatar)
     {
-        var tex = new Texture2D(2, 2);
-        tex.LoadImage(avatar);
-        var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
+        var sprite = Sprite.Create(avatar, new Rect(0, 0, avatar.width, avatar.height), new Vector2(avatar.width / 2, avatar.height / 2));
         return sprite;
     }
 }
