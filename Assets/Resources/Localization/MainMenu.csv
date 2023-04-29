@@ -9,3 +9,6 @@ Menu.Codeplaceholder,Code...,Код...
 Menu.CodeTip,4 symbols,4 символа
 Menu.Nickname,Nickname,Никнейм
 Menu.NicknamePlaceholder,Nickname...,Никнейм...
+Menu.ExitWarningTitle,Are you sure you want to quit?,"Вы уверены, что хотите выйти?"
+Menu.ExitWarningTitle.Yes,Yes,Да
+Menu.ExitWarningTitle.No,No,Нет

@@ -11,7 +11,8 @@ public class MainMenu : BaseMenu
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _exitButton;
     [SerializeField] private TMP_InputField _findGameCodeInput;
-
+    [SerializeField] private ConfirmWindowView _exitWarning;
+    
     private ChooseGameNetworkManager _chooseGameNetworkManager;
     
     [Inject]
@@ -60,7 +61,8 @@ public class MainMenu : BaseMenu
 
     private void OnExitGameButton()
     {
-        Application.Quit();
+        _exitWarning.gameObject.SetActive(true);
+        _exitWarning.ConfirmAction(Application.Quit);
     }
 
     private void OnFindGameCodeValueChanged(string value)
