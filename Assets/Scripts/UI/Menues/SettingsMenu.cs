@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 
 public class SettingsMenu : BaseMenu
 {
@@ -10,6 +12,16 @@ public class SettingsMenu : BaseMenu
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private TMP_Text _soundValueText;
     [SerializeField] private TMP_Text _musicValueText;
+    
+    private InterfaceManager _interfaceManager;
+    
+    protected override Action DoWhenPressEscape => OnBackButton;
+    
+    [Inject]
+    private void Construct(InterfaceManager interfaceManager)
+    {
+        _interfaceManager = interfaceManager;
+    }
     
     public override void SetState(bool state)
     {
@@ -24,7 +36,7 @@ public class SettingsMenu : BaseMenu
         }
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         _backButton.onClick.AddListener(OnBackButton);
         _toggleScreenModeButton.onClick.AddListener(OnToggleScreenModeButton);
@@ -58,14 +70,6 @@ public class SettingsMenu : BaseMenu
 
     private void OnBackButton()
     {
-        InterfaceManager.Toggle(MenuName.MainMenu);
-    }
-
-    private void OnDisable()
-    {
-        _backButton.onClick.RemoveListener(OnBackButton);
-        _toggleScreenModeButton.onClick.RemoveListener(OnToggleScreenModeButton);
-        _soundSlider.onValueChanged.RemoveListener(OnSoundValueChanges);
-        _musicSlider.onValueChanged.RemoveListener(OnMusicValueChanges);
+        _interfaceManager.Toggle(MenuName.MainMenu);
     }
 }

@@ -9,13 +9,14 @@ public class RoomAvatarBanner : MonoBehaviour
     [SerializeField] private TMP_Text _userName;
 
     public RectTransform Rect => _rectTransform;
-    public bool isOpened { get; set; }
+    public bool isOpened { get; private set; }
     
     public void SetUserData(string name, Texture2D avatar = null)
     {
         _userName.text = name;
         if(null != avatar)
             _avatarImage.overrideSprite = GetSpriteFromBytes(avatar);
+        isOpened = true;
     }
 
     private Sprite GetSpriteFromBytes(Texture2D avatar)

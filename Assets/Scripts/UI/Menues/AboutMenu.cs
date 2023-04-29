@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -5,14 +6,15 @@ public class AboutMenu : BaseMenu
 {
     [SerializeField] private TMP_Text _versionText;
 
-    public override void SetData(AppData data)
+    protected override Action DoWhenPressEscape => OnBackButton;
+    
+    private void Awake()
     {
-        base.SetData(data);
         _versionText.text = Application.version;
     }
 
     public void OnBackButton()
     {
-        InterfaceManager.Toggle(MenuName.MainMenu);
+        _interfaceManager.Toggle(MenuName.MainMenu);
     }
 }

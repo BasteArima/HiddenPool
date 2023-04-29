@@ -1,17 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using Zenject;
 
-public class IAPSystem : BaseMonoSystem, IStoreListener
+public class IAPSystem : MonoBehaviour, IStoreListener
 {
     [SerializeField] private List<IAPButton> _nonConsumableButtons = new List<IAPButton>();
-    
+
+    private AppData _data;
     private IStoreController _controller;
     private IExtensionProvider _extensions;
 
-    public override void Init(AppData data)
+    [Inject]
+    private void Construct(AppData data)
     {
-        base.Init(data);
+        _data = data;
+    }
+
+    private void Awake()
+    {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
         builder.AddProduct("remove_ads", ProductType.NonConsumable);
         UnityPurchasing.Initialize(this, builder);
@@ -23,10 +30,16 @@ public class IAPSystem : BaseMonoSystem, IStoreListener
         _extensions = extensions;
         RemovePurchasedNonConsumableProducts();
     }
-    
+
     public void OnInitializeFailed(InitializationFailureReason error)
     {
         Debug.Log($"Initialize IAP Failed with error: {error}");
+    }
+
+    public void OnInitializeFailed(InitializationFailureReason error, string message)
+    {
+        Debug.Log($"Initialize IAP Failed with error: {error}");
+        Debug.Log($"Initialize IAP Failed with error message: {message}");
     }
 
     public PurchaseProcessingResult ProcessPurchase (PurchaseEventArgs e)

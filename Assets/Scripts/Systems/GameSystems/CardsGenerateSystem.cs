@@ -3,6 +3,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : BaseGameSystem
@@ -21,6 +22,7 @@ public class CardsGenerateSystem : BaseGameSystem
     private List<CardBase> _cards = new List<CardBase>();
     private List<int> _randNumbers = new List<int>();
     private int _cardCount = 40;
+    private AppData _data;
     
     public string Seed
     {
@@ -36,15 +38,16 @@ public class CardsGenerateSystem : BaseGameSystem
 
     public bool MainCardIsLocked { get; private set; }
 
-    public override void Init(AppData data)
+    [Inject]
+    private void Construct(AppData data)
     {
-        base.Init(data);
+        _data = data;
         SetObservables();
     }
 
     private void SetObservables()
     {
-        data.matchData.state
+        _data.matchData.state
             .Where(x => x == MatchData.State.EndGame)
             .Subscribe(_ => EndGame());
     }
@@ -56,10 +59,10 @@ public class CardsGenerateSystem : BaseGameSystem
         else if (int.Parse(_cardsCountInput.text) > 0)
             _cardCount = int.Parse(_cardsCountInput.text);
 
-        if (_cardCount > data.packsData.heroesSprites.Length)
+        if (_cardCount > _data.packsData.heroesSprites.Length)
         {
             Debug.Log($"Player want spawn cards more than sprites");
-            _cardCount = data.packsData.heroesSprites.Length;
+            _cardCount = _data.packsData.heroesSprites.Length;
             _cardsCountInput.text = _cardCount.ToString();
         }
 
@@ -73,8 +76,8 @@ public class CardsGenerateSystem : BaseGameSystem
 
         for (int i = 0; i < _cardCount; i++)
         {
-            var heroData = data.packsData.heroesSprites[
-                    GetRandomNonRepetitiveNumber(0, data.packsData.heroesSprites.Length)];
+            var heroData = _data.packsData.heroesSprites[
+                    GetRandomNonRepetitiveNumber(0, _data.packsData.heroesSprites.Length)];
 
             var card = Instantiate(_cardPrefab, _contentParent);
             card.SetData(this, heroData);
@@ -83,7 +86,7 @@ public class CardsGenerateSystem : BaseGameSystem
 
         ChoiceRandomCard();
 
-        data.matchData.state.Value = MatchData.State.Game;
+        _data.matchData.state.Value = MatchData.State.Game;
     }
 
     public void ChoiceRandomCard()
@@ -126,7 +129,7 @@ public class CardsGenerateSystem : BaseGameSystem
     public override void EndGame()
     {
         ClearGame();
-        data.matchData.state.Value = MatchData.State.MainMenu;
+        _data.matchData.state.Value = MatchData.State.MainMenu;
     }
 
     private void ClearGame()
@@ -148,10 +151,5 @@ public class CardsGenerateSystem : BaseGameSystem
     {
         ClearGame();
         Initialize();
-        
-        
-        
-        //if(FirebaseController.Instance.Initialized)
-        //    FirebaseController.Instance.UpdateRoomValuesOnDb(_seedInput.text, _cardCount);
     }
 }

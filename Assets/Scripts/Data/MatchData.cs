@@ -7,7 +7,6 @@ public class MatchData : ScriptableObject
     public enum State
     {
         None,
-        AppStart,
         MainMenu,
         Lobby,
         InitializeGame,

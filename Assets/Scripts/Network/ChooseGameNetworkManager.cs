@@ -1,12 +1,10 @@
 using Mirror;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class ChooseGameNetworkManager : NetworkBehaviour
 {
-    public static ChooseGameNetworkManager Instance;
-
-    [SerializeField] private AppData _data;
     [SerializeField] private CardsGenerateSystem _cardsGenerateSystem;
     [SerializeField] private TMP_Text _roomCodeText;
 
@@ -17,12 +15,16 @@ public class ChooseGameNetworkManager : NetworkBehaviour
 
     [SerializeField] private SyncList<PlayerNetworkData> _players = new SyncList<PlayerNetworkData>();
 
+    private AppData _data;
+    private InterfaceManager _interfaceManager;
+    
     public SyncList<PlayerNetworkData> Players => _players;
 
-    private void Awake()
+    [Inject]
+    private void Construct(AppData data, InterfaceManager interfaceManager)
     {
-        if (Instance != null) Destroy(Instance.gameObject);
-        Instance = this;
+        _data = data;
+        _interfaceManager = interfaceManager;
     }
     
     public override void OnStartServer()
@@ -48,7 +50,7 @@ public class ChooseGameNetworkManager : NetworkBehaviour
     {
         Debug.Log("OnStopClient");
         _data.matchData.state.Value = MatchData.State.EndGame;
-        InterfaceManager.Toggle(MenuName.MainMenu);
+        _interfaceManager.Toggle(MenuName.MainMenu);
     }
 
     private string GetRandomRoomCode()
@@ -59,7 +61,7 @@ public class ChooseGameNetworkManager : NetworkBehaviour
         return code;
     }
 
-    private static char GetRandomLetter()
+    private char GetRandomLetter()
     {
         var chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         var rand = new System.Random();

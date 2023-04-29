@@ -1,6 +1,7 @@
 using System;
 using Mirror;
 using UnityEngine;
+using Zenject;
 
 public class CustomNetworkManager : NetworkManager
 {
@@ -8,6 +9,13 @@ public class CustomNetworkManager : NetworkManager
 
     public static Action<PlayerNetworkData> ServerAddPlayer;
 
+    private ChooseGameNetworkManager _chooseGameNetworkManager;
+    
+    [Inject]
+    private void Construct(ChooseGameNetworkManager chooseGameNetworkManager)
+    {
+        _chooseGameNetworkManager = chooseGameNetworkManager;
+    }
 
     public override void Awake()
     {
@@ -22,8 +30,8 @@ public class CustomNetworkManager : NetworkManager
         
         var newPlayer = conn.identity.GetComponent<PlayerNetworkData>();
         
-        ChooseGameNetworkManager.Instance.Players.Add(newPlayer);
-        ChooseGameNetworkManager.Instance.OnClientGetInfoAddPlayer(newPlayer);
+        _chooseGameNetworkManager.Players.Add(newPlayer);
+        _chooseGameNetworkManager.OnClientGetInfoAddPlayer(newPlayer);
         
         ServerAddPlayer?.Invoke(newPlayer);
         Debug.Log("New player connected: " + newPlayer.PlayerName);

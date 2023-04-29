@@ -1,8 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SettingsSystem : BaseMonoSystem
+public class SettingsSystem : MonoBehaviour
 {
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Time.timeScale = 1;
+    }
+
     private void Start()
     {
         LoadSettings();
