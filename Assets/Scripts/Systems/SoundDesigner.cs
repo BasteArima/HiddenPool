@@ -26,6 +26,10 @@ public enum SoundBaseType
 public class SoundDesigner : MonoBehaviour
 {
     private static SoundDesigner _instance;
+
+    [SerializeField, Range(0,1)] private float _defaultSoundVolume = 0.5f;
+    [SerializeField, Range(0,1)] private float _defaultMusicVolume = 0.25f;
+    
     public static float GlobalSoundVolume { get; set; }
     public static float GlobalMusicVolume { get; set; }
     public static bool SoundMuted { get; set; }
@@ -38,16 +42,19 @@ public class SoundDesigner : MonoBehaviour
         if (_instance != null) Destroy(_instance.gameObject);
         _instance = this;
 
-        foreach (Sound sound in sounds)
+        foreach (var sound in sounds)
         {
-            var newas = gameObject.AddComponent<AudioSource>();
-            newas.clip = sound.audioClip;
-            newas.loop = sound.isLoop;
-            newas.playOnAwake = sound.playOnAwake;
-            newas.pitch = sound.pitch;
-            newas.volume = sound.volume;
-            sound.audioSource = newas;
+            var newAudioSource = gameObject.AddComponent<AudioSource>();
+            newAudioSource.clip = sound.audioClip;
+            newAudioSource.loop = sound.isLoop;
+            newAudioSource.playOnAwake = sound.playOnAwake;
+            newAudioSource.pitch = sound.pitch;
+            newAudioSource.volume = sound.volume;
+            sound.audioSource = newAudioSource;
         }
+        
+        GlobalSoundVolume = PlayerPrefs.GetFloat("SoundValue", _defaultSoundVolume);
+        GlobalMusicVolume = PlayerPrefs.GetFloat("MusicValue", _defaultMusicVolume);
     }
 
     private void Start()

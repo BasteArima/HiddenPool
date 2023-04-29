@@ -16,9 +16,6 @@ public class SettingsSystem : MonoBehaviour
 
     private void LoadSettings()
     {
-        SoundDesigner.GlobalSoundVolume = PlayerPrefs.GetFloat("SoundValue", 1);
-        SoundDesigner.GlobalMusicVolume = PlayerPrefs.GetFloat("MusicValue", 0.25f);
-
         SoundDesigner.SetVolumeAudioSource(SoundBaseType.Sound, SoundDesigner.GlobalSoundVolume);
         SoundDesigner.SetVolumeAudioSource(SoundBaseType.Music, SoundDesigner.GlobalMusicVolume);
     }

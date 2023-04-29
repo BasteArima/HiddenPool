@@ -5,8 +5,8 @@ using Random = UnityEngine.Random;
 public class SaveDataSystem : MonoBehaviour
 {
     public static SaveDataSystem Instance;
-    
-    [Header("Start values")]
+
+    [Header("Default Values")]
     [SerializeField] private string _userName;
     [SerializeField] private int _sessionsCount;
     [SerializeField] private int _coins;
