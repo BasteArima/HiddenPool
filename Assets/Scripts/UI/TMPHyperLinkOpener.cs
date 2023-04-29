@@ -14,7 +14,13 @@ public class TMPHyperLinkOpener : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        var linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, Input.GetTouch(0).position, Camera.main);
+        int linkIndex = 0;
+        #if UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE
+        linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, Input.GetTouch(0).position, Camera.main);
+        #else
+        linkIndex = TMP_TextUtilities.FindIntersectingLink(_textMeshPro, Input.mousePosition, Camera.main);
+        #endif
+        
         if (linkIndex != -1)
         {
             var linkInfo = _textMeshPro.textInfo.linkInfo[linkIndex];

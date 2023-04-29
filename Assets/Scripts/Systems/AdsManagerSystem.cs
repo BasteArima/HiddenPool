@@ -2,21 +2,24 @@ using System;
 using UnityEngine;
 using YandexMobileAds;
 using YandexMobileAds.Base;
+using Zenject;
 
-public class AdsManagerSystem : BaseMonoSystem
+public class AdsManagerSystem : MonoBehaviour
 {
     public static AdsManagerSystem Instance;
 
     [SerializeField] private string _adUnitId = "R-M-DEMO-interstitial";
-    
+
+    private AppData _data;
     private String message = "";
     private Interstitial interstitial;
 
     public bool ShowAds { get; set; } = false;
-    
-    public override void Init(AppData data)
+
+    [Inject]
+    private void Construct(AppData data)
     {
-        base.Init(data);
+        _data = data;
         if (Instance != null) Destroy(Instance.gameObject);
         Instance = this;
         

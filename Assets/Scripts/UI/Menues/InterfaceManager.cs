@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public enum MenuName
 {
@@ -13,45 +14,35 @@ public enum MenuName
     LobbyMenu = 6
 }
 
-public class InterfaceManager : BaseMonoSystem
+public class InterfaceManager : MonoBehaviour
 {
-    private static InterfaceManager _instance;
-
     [SerializeField] private BaseMenu[] _menus;
-
     [SerializeField] private TMP_Text _versionText;
 
-    public override void Init(AppData data)
+    private AppData _data;
+    private HotKeyInputSystem _hotKeyInputSystem;
+    
+    [Inject]
+    private void Construct(AppData data, HotKeyInputSystem hotKeyInputSystem)
     {
-        base.Init(data);
+        _data = data;
+        _hotKeyInputSystem = hotKeyInputSystem;
+    }
 
-        if (_instance != null) Destroy(_instance.gameObject);
-        _instance = this;
-
-        AddDataForAllBaseMenu();
+    private void Awake()
+    {
         Toggle(MenuName.MainMenu);
-        Application.targetFrameRate = 60;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Time.timeScale = 1;
     }
 
     private void Start()
     {
-        _versionText.text = Application.version;
+        _versionText.text = $"v{Application.version}";
         SoundDesigner.PlaySound(SoundType.MainMenuLoop);
     }
 
-    private void AddDataForAllBaseMenu()
+    public void Toggle(MenuName name)
     {
         foreach (var baseMenu in _menus)
-        {
-            baseMenu.SetData(data);
-        }
-    }
-
-    public static void Toggle(MenuName name)
-    {
-        foreach (var baseMenu in _instance._menus)
         {
             var state = baseMenu.Name == name;
             baseMenu.gameObject.SetActive(state);
@@ -59,17 +50,17 @@ public class InterfaceManager : BaseMonoSystem
         }
     }
 
-    public static void TurnOnOff(MenuName name, bool state)
+    public void TurnOnOff(MenuName name, bool state)
     {
-        var baseMenu = _instance._menus.SingleOrDefault(m => m.Name == name);
+        var baseMenu = _menus.SingleOrDefault(m => m.Name == name);
         if (baseMenu == null) return;
         baseMenu.gameObject.SetActive(state);
         baseMenu.SetState(state);
     }
 
-    public static bool GetMenuActive(MenuName name)
+    public bool GetMenuActive(MenuName name)
     {
-        var baseMenu = _instance._menus.SingleOrDefault(m => m.Name == name);
+        var baseMenu = _menus.SingleOrDefault(m => m.Name == name);
         if (baseMenu == null) return false;
         return baseMenu.State;
     }

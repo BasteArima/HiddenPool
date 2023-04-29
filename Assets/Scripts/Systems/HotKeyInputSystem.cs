@@ -1,24 +1,13 @@
+using System;
 using UnityEngine;
 
-public class HotKeyInputSystem : BaseMonoSystem
+public class HotKeyInputSystem : MonoBehaviour
 {
+    public Action EscapePressed;
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!InterfaceManager.GetMenuActive(MenuName.MainMenu) 
-                && !InterfaceManager.GetMenuActive(MenuName.AboutMenu)
-                && !InterfaceManager.GetMenuActive(MenuName.SettingsMenu)
-                && !InterfaceManager.GetMenuActive(MenuName.LobbyMenu)
-                )
-            {
-                var currentPauseMenuStatus = InterfaceManager.GetMenuActive(MenuName.PauseMenu);
-                InterfaceManager.TurnOnOff(MenuName.PauseMenu, !currentPauseMenuStatus);
-            }
-            else
-            {
-                InterfaceManager.Toggle(MenuName.MainMenu);
-            }
-        }
+            EscapePressed?.Invoke();
     }
 }

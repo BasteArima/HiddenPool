@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
@@ -23,6 +24,8 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     [Header("Common")]
     [SerializeField] private GameObject _helpPanel;
+    
+    protected override Action DoWhenPressEscape => OnPauseButton;
 
     private void Awake()
     {
@@ -48,7 +51,7 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnPauseButton()
     {
-        InterfaceManager.TurnOnOff(MenuName.PauseMenu, true);
+        _interfaceManager.TurnOnOff(MenuName.PauseMenu, true);
     }
 
     private void OnHelpControlsButton()
@@ -59,8 +62,6 @@ public class HiddenPoolCoreMenu : BaseMenu
     private void OnGenerateButton()
     {
         _chooseGameNetworkManager.ChangeGameOptions();
-
-        //_cardsGenerateSystem.RestartGame();
     }
 
     private void OnClearButton()
@@ -70,8 +71,6 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnExitButton()
     {
-        //FirebaseController.Instance.RoomExit();
-
         if (NetworkServer.active && NetworkClient.isConnected)
             NetworkManager.singleton.StopHost();
         else if (NetworkClient.isConnected)
@@ -79,8 +78,8 @@ public class HiddenPoolCoreMenu : BaseMenu
         else if (NetworkServer.active)
             NetworkManager.singleton.StopServer();
 
-        data.matchData.state.Value = MatchData.State.EndGame;
-        InterfaceManager.Toggle(MenuName.MainMenu);
+        _data.matchData.state.Value = MatchData.State.EndGame;
+        _interfaceManager.Toggle(MenuName.MainMenu);
     }
 
     private void OnRefreshMainCardButton()

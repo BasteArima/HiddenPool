@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseGameSystem : BaseMonoSystem
+public class BaseGameSystem : MonoBehaviour
 {
     [SerializeField] protected MatchData.MiniGames _gameType;
     public MatchData.MiniGames GameType => _gameType;

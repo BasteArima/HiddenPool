@@ -23,7 +23,7 @@ public enum SoundBaseType
 {
     Sound, Music
 }
-public class SoundDesigner : BaseMonoSystem
+public class SoundDesigner : MonoBehaviour
 {
     private static SoundDesigner _instance;
     public static float GlobalSoundVolume { get; set; }

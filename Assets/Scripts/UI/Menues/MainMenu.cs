@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class MainMenu : BaseMenu
 {
@@ -11,6 +12,14 @@ public class MainMenu : BaseMenu
     [SerializeField] private Button _exitButton;
     [SerializeField] private TMP_InputField _findGameCodeInput;
 
+    private ChooseGameNetworkManager _chooseGameNetworkManager;
+    
+    [Inject]
+    private void Construct(ChooseGameNetworkManager chooseGameNetworkManager)
+    {
+        _chooseGameNetworkManager = chooseGameNetworkManager;
+    }
+    
     private void Awake()
     {
         _hostButton.onClick.AddListener(OnHostButton);
@@ -25,33 +34,28 @@ public class MainMenu : BaseMenu
     private void OnHostButton()
     {
         CustomNetworkManager.Instance.StartHost();
-        data.matchData.state.Value = MatchData.State.InitializeGame;
+        _data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
-        InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
-        ChooseGameNetworkManager.Instance.OnHostGame();
-        
-        //if (FirebaseController.Instance.Initialized)
-        //    FirebaseController.Instance.CreateRoom();
+        _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
+        _chooseGameNetworkManager.OnHostGame();
     }
 
     private void OnFindGameButton()
     {
-        //if (!FirebaseController.Instance.Initialized) return;
-        //    FirebaseController.Instance.JoinRoom(_findGameCodeInput.text.ToUpper());
         CustomNetworkManager.Instance.StartClient();
-        data.matchData.state.Value = MatchData.State.InitializeGame;
+        _data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
-        InterfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
+        _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
     }
 
     private void OnAboutButton()
     {
-        InterfaceManager.Toggle(MenuName.AboutMenu);
+        _interfaceManager.Toggle(MenuName.AboutMenu);
     }
 
     private void OnSettingsButton()
     {
-        InterfaceManager.Toggle(MenuName.SettingsMenu);
+        _interfaceManager.Toggle(MenuName.SettingsMenu);
     }
 
     private void OnExitGameButton()

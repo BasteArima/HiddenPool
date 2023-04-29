@@ -1,10 +1,5 @@
 fileFormatVersion: 2
-guid: e2b1894e7d784825bf9719c33331fae8
-labels:
-- gvh
-- gvh_version-1.2.169
-- gvhp_exportpath-ExternalDependencyManager/Editor/1.2.169/Google.IOSResolver.dll
-- gvhp_targets-editor
+guid: 287b359382aa21041b8380d9fcb36a63
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -22,22 +17,22 @@ PluginImporter:
       enabled: 0
       settings:
         Exclude Android: 1
-        Exclude Editor: 1
+        Exclude Editor: 0
         Exclude Linux64: 1
         Exclude OSXUniversal: 1
-        Exclude Win: 1
-        Exclude Win64: 1
+        Exclude WebGL: 1
+        Exclude Win: 0
+        Exclude Win64: 0
   - first:
       Android: Android
     second:
       enabled: 0
       settings:
-        AndroidSharedLibraryType: Executable
         CPU: ARMv7
   - first:
       Any: 
     second:
-      enabled: 0
+      enabled: 1
       settings: {}
   - first:
       Editor: Editor
@@ -46,13 +41,13 @@ PluginImporter:
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
-        OS: AnyOS
+        OS: Windows
   - first:
       Standalone: Linux64
     second:
       enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: None
   - first:
       Standalone: OSXUniversal
     second:
@@ -62,13 +57,13 @@ PluginImporter:
   - first:
       Standalone: Win
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: x86
   - first:
       Standalone: Win64
     second:
-      enabled: 0
+      enabled: 1
       settings:
         CPU: x86_64
   - first:

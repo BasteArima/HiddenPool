@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class RoomPlayerBannersController : BaseMonoSystem
+public class RoomPlayerBannersController : MonoBehaviour
 {
     [SerializeField] private List<RoomAvatarBanner> _avatarsBanners;
     
@@ -34,7 +34,7 @@ public class RoomPlayerBannersController : BaseMonoSystem
             if (!banner.isOpened)
             {
                 banner.Rect.DOAnchorPosY(_openedPositionY, _openDuration);
-                banner.SetUserData(player.PlayerName, null);
+                banner.SetUserData(player.PlayerName, player.PlayerAvatar);
                 break;
             }
         }

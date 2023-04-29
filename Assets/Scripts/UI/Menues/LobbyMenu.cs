@@ -1,7 +1,11 @@
+using System;
+
 public class LobbyMenu : BaseMenu
 {
+    protected override Action DoWhenPressEscape => OnBackButton;
+    
     public void OnBackButton()
     {
-        InterfaceManager.Toggle(MenuName.MainMenu);
+        _interfaceManager.Toggle(MenuName.MainMenu);
     }
 }
