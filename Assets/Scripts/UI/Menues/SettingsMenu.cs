@@ -13,15 +13,7 @@ public class SettingsMenu : BaseMenu
     [SerializeField] private TMP_Text _soundValueText;
     [SerializeField] private TMP_Text _musicValueText;
     
-    private InterfaceManager _interfaceManager;
-    
     protected override Action DoWhenPressEscape => OnBackButton;
-    
-    [Inject]
-    private void Construct(InterfaceManager interfaceManager)
-    {
-        _interfaceManager = interfaceManager;
-    }
     
     public override void SetState(bool state)
     {
