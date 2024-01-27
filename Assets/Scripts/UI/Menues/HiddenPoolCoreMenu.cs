@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Mirror;
 
 public class HiddenPoolCoreMenu : BaseMenu
 {
@@ -71,12 +70,12 @@ public class HiddenPoolCoreMenu : BaseMenu
 
     private void OnExitButton()
     {
-        if (NetworkServer.active && NetworkClient.isConnected)
-            NetworkManager.singleton.StopHost();
-        else if (NetworkClient.isConnected)
-            NetworkManager.singleton.StopClient();
-        else if (NetworkServer.active)
-            NetworkManager.singleton.StopServer();
+        // if (NetworkServer.active && NetworkClient.isConnected)
+        //     NetworkManager.singleton.StopHost();
+        // else if (NetworkClient.isConnected)
+        //     NetworkManager.singleton.StopClient();
+        // else if (NetworkServer.active)
+        //     NetworkManager.singleton.StopServer();
 
         _data.matchData.state.Value = MatchData.State.EndGame;
         _interfaceManager.Toggle(MenuName.MainMenu);

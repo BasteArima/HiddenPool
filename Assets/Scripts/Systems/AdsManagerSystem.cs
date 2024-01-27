@@ -31,7 +31,7 @@ public class AdsManagerSystem : MonoBehaviour
     public void TryShowVideoAds()
     {
 #if !UNITY_EDITOR
-        if (BuildConfig.Yandex_Ads && ShowAds)
+        if (ShowAds)
         {
             ShowInterstitial();
         }

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using AnotherFileBrowser.Windows;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -54,15 +50,15 @@ public class PlayerProfileController : MonoBehaviour
 
     public void OpenFileBrowser()
     {
-        var bp = new BrowserProperties();
-        bp.filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
-        bp.filterIndex = 0;
-
-        new FileBrowser().OpenFileBrowser(bp, path =>
-        {
-            //Load image from local path with UWR
-            StartCoroutine(LoadImage(path));
-        });
+        // var bp = new BrowserProperties();
+        // bp.filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+        // bp.filterIndex = 0;
+        //
+        // new FileBrowser().OpenFileBrowser(bp, path =>
+        // {
+        //     //Load image from local path with UWR
+        //     StartCoroutine(LoadImage(path));
+        // });
     }
 
     IEnumerator LoadImage(string path)
