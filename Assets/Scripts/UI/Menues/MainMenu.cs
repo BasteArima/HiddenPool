@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -34,7 +35,7 @@ public class MainMenu : BaseMenu
 
     private void OnHostButton()
     {
-        CustomNetworkManager.Instance.StartHost();
+        NetworkManager.Singleton.StartHost();
         _data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
         _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
@@ -43,7 +44,7 @@ public class MainMenu : BaseMenu
 
     private void OnFindGameButton()
     {
-        CustomNetworkManager.Instance.StartClient();
+        NetworkManager.Singleton.StartClient();
         _data.matchData.state.Value = MatchData.State.InitializeGame;
         ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
         _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
