@@ -30,7 +30,7 @@ MonoBehaviour:
   secretKey:
   - a28911725daea4d0720518e2750e2d83c00e8c08
   Build:
-  - 0.4.0
+  - 0.5.1
   SelectedPlatformOrganization:
   - Baste
   SelectedPlatformStudio:

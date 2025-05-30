@@ -14,12 +14,5 @@ public class MatchData : ScriptableObject
         EndGame,
     }
 
-    public enum MiniGames
-    {
-        None,
-        HiddenPool
-    }
-
     public ReactiveProperty<State> state = new ReactiveProperty<State>(State.None);
-    public ReactiveProperty<MiniGames> game = new ReactiveProperty<MiniGames>(MiniGames.None);
 }

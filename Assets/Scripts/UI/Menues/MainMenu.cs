@@ -1,11 +1,12 @@
 using TMPro;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 public class MainMenu : BaseMenu
 {
+    [Inject] private readonly CardsGenerateSystem _cardsGenerateSystem;
+    
     [SerializeField] private Button _hostButton;
     [SerializeField] private Button _findGameButton;
     [SerializeField] private Button _aboutButton;
@@ -14,17 +15,9 @@ public class MainMenu : BaseMenu
     [SerializeField] private TMP_InputField _findGameCodeInput;
     [SerializeField] private ConfirmWindowView _exitWarning;
     
-    private ChooseGameNetworkManager _chooseGameNetworkManager;
-    
-    [Inject]
-    private void Construct(ChooseGameNetworkManager chooseGameNetworkManager)
-    {
-        _chooseGameNetworkManager = chooseGameNetworkManager;
-    }
-    
     private void Awake()
     {
-        _hostButton.onClick.AddListener(OnHostButton);
+        _hostButton.onClick.AddListener(OnCreateGame);
         _findGameButton.onClick.AddListener(OnFindGameButton);
         _aboutButton.onClick.AddListener(OnAboutButton);
         _settingsButton.onClick.AddListener(OnSettingsButton);
@@ -33,21 +26,17 @@ public class MainMenu : BaseMenu
         _findGameCodeInput.onValueChanged.Invoke("");
     }
 
-    private void OnHostButton()
+    private void OnCreateGame()
     {
-        NetworkManager.Singleton.StartHost();
         _data.matchData.state.Value = MatchData.State.InitializeGame;
-        ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
+        _cardsGenerateSystem.Initialize();
+        AdsManagerSystem.Instance.TryShowVideoAds();
         _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
-        _chooseGameNetworkManager.OnHostGame();
     }
 
     private void OnFindGameButton()
     {
-        NetworkManager.Singleton.StartClient();
-        _data.matchData.state.Value = MatchData.State.InitializeGame;
-        ChooseGameSystem.ChooseGame(MatchData.MiniGames.HiddenPool);
-        _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
+        OnCreateGame();
     }
 
     private void OnAboutButton()

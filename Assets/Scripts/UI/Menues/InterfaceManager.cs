@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -65,14 +66,15 @@ public class InterfaceManager : MonoBehaviour
         return baseMenu.State;
     }
 
-    [SerializeField] private TMP_Text[] _texts;
+    #if UNITY_EDITOR
     [SerializeField] private TMP_FontAsset _font;
 
-    [ContextMenu("Test")]
-    private void Test()
+    [Button]
+    private void ChangeFont()
     {
-        _texts = FindObjectsOfType<TMP_Text>(true);
-        foreach (var text in _texts)
+        var texts = FindObjectsOfType<TMP_Text>(true);
+        foreach (var text in texts)
             text.font = _font;
     }
+    #endif
 }
