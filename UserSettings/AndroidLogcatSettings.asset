@@ -1,44 +1,13 @@
 {
     "m_SelectedDeviceId": "QGDQB6SCOFY9VGD6",
-    "m_SelectedPackage": {
-        "deviceId": "QGDQB6SCOFY9VGD6",
-        "name": "com.KatharsisGames.HiddenPool",
-        "processId": 2990,
+    "m_SelectedProcess": {
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.android.vending",
-            "processId": 16484,
-            "exited": true
-        },
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.KatharsisGames.HiddenPool",
-            "processId": 18845,
-            "exited": true
-        },
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.KatharsisGames.HiddenPool",
-            "processId": 5478,
-            "exited": true
-        },
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.KatharsisGames.HiddenPool",
-            "processId": 26192,
-            "exited": true
-        },
-        {
-            "deviceId": "QGDQB6SCOFY9VGD6",
-            "name": "com.KatharsisGames.HiddenPool",
-            "processId": 2990,
-            "exited": false
-        }
-    ],
+    "m_KnownProcessesForSerialization": [],
     "m_Tags": {
         "m_Entries": [
             {
@@ -71,8 +40,11 @@
             }
         ]
     },
+    "m_ExtraWindowState": {
+        "Type": 0,
+        "Height": 0.0
+    },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 300.0,
         "MemoryWindowWidth": 170.0,
         "MemoryTypeEnabled": [
             true,
@@ -87,7 +59,7 @@
             true
         ],
         "MemoryGroup": 2,
-        "Behavior": 0
+        "AutoCapture": true
     },
     "m_FilterOptions": {
         "m_Filter": "",
@@ -105,5 +77,28 @@
         "BitRateK": 20000,
         "DisplayIdEnabled": false,
         "DisplayId": ""
-    }
+    },
+    "m_ScreenCaptureSettings": {
+        "Mode": 0,
+        "m_LastSaveLocation": [
+            "K:\\Unity\\UnityProjects\\DotaMiniGames",
+            "K:\\Unity\\UnityProjects\\DotaMiniGames"
+        ]
+    },
+    "m_QueryLayoutSettings": {
+        "LastLayoutSaveLocation": "",
+        "LastScreenshotSaveLocation": ""
+    },
+    "m_InputSettings": {
+        "ShiftModifier": false,
+        "SendText": "",
+        "PosixKillSignal": 0,
+        "TargetProcess": {
+            "deviceId": "",
+            "name": "",
+            "processId": 0,
+            "exited": false
+        }
+    },
+    "m_AutoScroll": 0
 }

@@ -6,7 +6,7 @@ using TMPro;
 using Zenject;
 using Random = UnityEngine.Random;
 
-public class CardsGenerateSystem : BaseGameSystem
+public class CardsGenerateSystem : MonoBehaviour
 {
     [SerializeField] private CardBase _cardPrefab;
     [SerializeField] private Transform _contentParent;
@@ -52,8 +52,9 @@ public class CardsGenerateSystem : BaseGameSystem
             .Subscribe(_ => EndGame());
     }
 
-    public override void Initialize()
+    public void Initialize()
     {
+        ClearGame();
         if (string.IsNullOrEmpty(_cardsCountInput.text))
             _cardsCountInput.text = _cardCount.ToString();
         else if (int.Parse(_cardsCountInput.text) > 0)
@@ -126,7 +127,7 @@ public class CardsGenerateSystem : BaseGameSystem
         return randNumber;
     }
 
-    public override void EndGame()
+    public void EndGame()
     {
         ClearGame();
         _data.matchData.state.Value = MatchData.State.MainMenu;
@@ -141,15 +142,8 @@ public class CardsGenerateSystem : BaseGameSystem
         _randNumbers.Clear();
     }
 
-    public void RestartGameByClient()
+    public void RestartGame()
     {
-        ClearGame();
-        Initialize();
-    }
-
-    public override void RestartGame()
-    {
-        ClearGame();
         Initialize();
     }
 }
