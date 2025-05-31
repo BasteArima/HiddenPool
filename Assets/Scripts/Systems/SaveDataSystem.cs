@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 public class SaveDataSystem : MonoBehaviour
@@ -11,13 +10,10 @@ public class SaveDataSystem : MonoBehaviour
     [SerializeField] private int _sessionsCount;
     [SerializeField] private int _coins;
     [SerializeField] private int _amountWins;
-
-    private AppData _data;
+    [SerializeField] private AppData _data;
     
-    [Inject]
-    private void Construct(AppData data)
+    private void Awake()
     {
-        _data = data;
         if (Instance != null) Destroy(Instance.gameObject);
         Instance = this;
         

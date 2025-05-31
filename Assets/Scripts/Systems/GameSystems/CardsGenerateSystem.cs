@@ -3,11 +3,11 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Zenject;
 using Random = UnityEngine.Random;
 
 public class CardsGenerateSystem : MonoBehaviour
 {
+    [SerializeField] private AppData _data;
     [SerializeField] private CardBase _cardPrefab;
     [SerializeField] private Transform _contentParent;
     
@@ -22,7 +22,6 @@ public class CardsGenerateSystem : MonoBehaviour
     private List<CardBase> _cards = new List<CardBase>();
     private List<int> _randNumbers = new List<int>();
     private int _cardCount = 40;
-    private AppData _data;
     
     public string Seed
     {
@@ -38,10 +37,8 @@ public class CardsGenerateSystem : MonoBehaviour
 
     public bool MainCardIsLocked { get; private set; }
 
-    [Inject]
-    private void Construct(AppData data)
+    private void Awake()
     {
-        _data = data;
         SetObservables();
     }
 

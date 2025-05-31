@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
 public enum MenuName
 {
@@ -12,31 +11,24 @@ public enum MenuName
     AboutMenu = 3,
     SettingsMenu = 4,
     PauseMenu = 5,
-    LobbyMenu = 6
 }
 
 public class InterfaceManager : MonoBehaviour
 {
     [SerializeField] private BaseMenu[] _menus;
     [SerializeField] private TMP_Text _versionText;
-
-    private AppData _data;
-    private HotKeyInputSystem _hotKeyInputSystem;
-    
-    [Inject]
-    private void Construct(AppData data, HotKeyInputSystem hotKeyInputSystem)
-    {
-        _data = data;
-        _hotKeyInputSystem = hotKeyInputSystem;
-    }
+    [SerializeField] private AppData _data;
+    [SerializeField] private HotKeyInputSystem _hotKeyInputSystem;
 
     private void Awake()
     {
-        Toggle(MenuName.MainMenu);
+        foreach (var menu in _menus)
+            menu.Init(this, _data, _hotKeyInputSystem);
     }
 
     private void Start()
     {
+        Toggle(MenuName.MainMenu);
         _versionText.text = $"v{Application.version}";
         SoundDesigner.PlaySound(SoundType.MainMenuLoop);
     }

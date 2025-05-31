@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Zenject;
 
 public class BaseMenu : MonoBehaviour
 {
@@ -17,14 +16,11 @@ public class BaseMenu : MonoBehaviour
     protected InterfaceManager _interfaceManager;
     protected HotKeyInputSystem _hotKeyInputSystem;
 
-    [Inject]
-    protected virtual void Construct(AppData data, InterfaceManager interfaceManager,
-        HotKeyInputSystem hotKeyInputSystem)
+    public void Init(InterfaceManager interfaceManager, AppData data, HotKeyInputSystem hotKeyInputSystem)
     {
-        _data = data;
         _interfaceManager = interfaceManager;
+        _data = data;
         _hotKeyInputSystem = hotKeyInputSystem;
-        
     }
     
     public virtual void SetState(bool state)
