@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class HiddenPoolCoreMenu : BaseMenu
 {
-    [Inject] private readonly CardsGenerateSystem _cardsGenerateSystem;
+    [SerializeField] private CardsGenerateSystem _cardsGenerateSystem;
     
     [Header("Buttons")]
     [SerializeField] private Button _refreshMainCardButton;

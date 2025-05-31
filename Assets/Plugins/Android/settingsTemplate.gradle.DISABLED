@@ -1,0 +1,36 @@
+// Этот блок отвечает за то, откуда берутся плагины Gradle (не AAR-библиотеки)
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+// Какие модули у нас в проекте
+include ':launcher', ':unityLibrary'
+/**INCLUDES**/  // Unity сам подставит include для своих подпроектов
+
+// А это уже «обычные» репозитории для AAR-библиотек
+dependencyResolutionManagement {
+    // PREFER_SETTINGS — берем репозитории именно из settingsTemplate, а не из каждого build.gradle
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        // сначала официальные Google/Maven Central
+        google()
+        mavenCentral()
+        // потом локальный Maven (на случай, если что-то ты залил в mavenLocal)
+        mavenLocal()
+        // и, наконец, flatDir для плагинов Unity
+// Android Resolver Repos Start
+        def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
+        maven {
+            url "https://maven.google.com/" // Assets/YandexMobileAds/Editor/YandexMobileadsDependencies.xml:7, Assets/YandexMobileAds/Editor/YandexMobileadsDependencies.xml:12
+        }
+        mavenLocal()
+// Android Resolver Repos End
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+    }
+}

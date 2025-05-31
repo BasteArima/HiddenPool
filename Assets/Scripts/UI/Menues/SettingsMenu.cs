@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Zenject;
 
 public class SettingsMenu : BaseMenu
 {

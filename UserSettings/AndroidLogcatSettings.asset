@@ -1,13 +1,26 @@
 {
     "m_SelectedDeviceId": "QGDQB6SCOFY9VGD6",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "QGDQB6SCOFY9VGD6",
+        "name": "com.KatharsisGames.HiddenPools",
+        "processId": 17520,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownProcessesForSerialization": [],
+    "m_KnownProcessesForSerialization": [
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.oppo.launcher",
+            "processId": 2514,
+            "exited": false
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPools",
+            "processId": 17520,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {

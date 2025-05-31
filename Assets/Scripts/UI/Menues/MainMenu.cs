@@ -1,12 +1,10 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class MainMenu : BaseMenu
 {
-    [Inject] private readonly CardsGenerateSystem _cardsGenerateSystem;
-    
+    [SerializeField] private CardsGenerateSystem _cardsGenerateSystem;
     [SerializeField] private Button _hostButton;
     [SerializeField] private Button _findGameButton;
     [SerializeField] private Button _aboutButton;
@@ -30,7 +28,7 @@ public class MainMenu : BaseMenu
     {
         _data.matchData.state.Value = MatchData.State.InitializeGame;
         _cardsGenerateSystem.Initialize();
-        AdsManagerSystem.Instance.TryShowVideoAds();
+        //AdsManagerSystem.Instance.TryShowVideoAds();
         _interfaceManager.Toggle(MenuName.HiddenPoolCoreMenu);
     }
 

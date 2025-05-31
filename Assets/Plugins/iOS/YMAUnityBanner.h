@@ -1,7 +1,9 @@
+#pragma once
+
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for iOS (C) 2018 YANDEX
+ * Version for iOS (C) 2023 YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
@@ -13,22 +15,22 @@
 
 @class YMAAdRequest;
 
-@interface YMAUnityBanner : NSObject
+@interface YMAUnityBanner: NSObject
 
-- (instancetype)initWithClientRef:(YMAUnityBannerClientRef *)clientRef
-                         adUnitID:(char *)adUnitID
-                           adSize:(YMAAdSize *)adSize
+- (instancetype)initWithClientRef:(YMAUnityBannerClientRef*)clientRef
+                         adUnitID:(char*)adUnitID
+                           adSize:(YMABannerAdSize*)bannerAdSize
                          position:(YMAUnityAdPosition)position;
 
-@property (nonatomic, assign) YMAUnityAdViewDidReceiveAdCallback adReceivedCallback;
-@property (nonatomic, assign) YMAUnityAdViewDidFailToReceiveAdWithErrorCallback loadingFailedCallback;
-@property (nonatomic, assign) YMAUnityAdViewWillPresentScreenCallback willPresentScreenCallback;
-@property (nonatomic, assign) YMAUnityAdViewDidDismissScreenCallback didDismissScreenCallback;
-@property (nonatomic, assign) YMAUnityAdViewDidTrackImpressionCallback didTrackImpressionCallback;
-@property (nonatomic, assign) YMAUnityAdViewWillLeaveApplicationCallback willLeaveApplicationCallback;
-@property (nonatomic, assign) YMAUnityAdViewDidClickCallback didClickCallback;
+@property(nonatomic, assign) YMAUnityAdViewDidReceiveAdCallback adReceivedCallback;
+@property(nonatomic, assign) YMAUnityAdViewDidFailToReceiveAdWithErrorCallback loadingFailedCallback;
+@property(nonatomic, assign) YMAUnityAdViewWillPresentScreenCallback willPresentScreenCallback;
+@property(nonatomic, assign) YMAUnityAdViewDidDismissScreenCallback didDismissScreenCallback;
+@property(nonatomic, assign) YMAUnityAdViewDidTrackImpressionCallback didTrackImpressionCallback;
+@property(nonatomic, assign) YMAUnityAdViewWillLeaveApplicationCallback willLeaveApplicationCallback;
+@property(nonatomic, assign) YMAUnityAdViewDidClickCallback didClickCallback;
 
-- (void)loadAdWithRequest:(YMAAdRequest *)adRequest;
+- (void)loadAdWithRequest:(YMAAdRequest*)adRequest;
 
 - (void)show;
 

@@ -1,21 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
-using Zenject;
 
 public class IAPSystem : MonoBehaviour, IStoreListener
 {
     [SerializeField] private List<IAPButton> _nonConsumableButtons = new List<IAPButton>();
+    [SerializeField] private AppData _data;
 
-    private AppData _data;
     private IStoreController _controller;
     private IExtensionProvider _extensions;
-
-    [Inject]
-    private void Construct(AppData data)
-    {
-        _data = data;
-    }
 
     private void Awake()
     {
@@ -71,6 +64,5 @@ public class IAPSystem : MonoBehaviour, IStoreListener
     {
         RemovePurchasedNonConsumableProducts();
         Debug.Log("OnPurchaseRemoveReward");
-        AdsManagerSystem.Instance.ShowAds = false;
     }
 }
