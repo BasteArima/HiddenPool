@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "QGDQB6SCOFY9VGD6",
         "name": "com.KatharsisGames.HiddenPools",
-        "processId": 17520,
+        "processId": 21482,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,12 @@
             "deviceId": "QGDQB6SCOFY9VGD6",
             "name": "com.KatharsisGames.HiddenPools",
             "processId": 17520,
+            "exited": false
+        },
+        {
+            "deviceId": "QGDQB6SCOFY9VGD6",
+            "name": "com.KatharsisGames.HiddenPools",
+            "processId": 21482,
             "exited": false
         }
     ],
