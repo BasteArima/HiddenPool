@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Purchasing;
+//using UnityEngine.Purchasing;
 
-public class IAPSystem : MonoBehaviour, IStoreListener
+public class IAPSystem : MonoBehaviour//, IStoreListener
 {
-    [SerializeField] private List<IAPButton> _nonConsumableButtons = new List<IAPButton>();
+    /*[SerializeField] private List<IAPButton> _nonConsumableButtons = new List<IAPButton>();
     [SerializeField] private AppData _data;
 
     private IStoreController _controller;
@@ -64,5 +64,5 @@ public class IAPSystem : MonoBehaviour, IStoreListener
     {
         RemovePurchasedNonConsumableProducts();
         Debug.Log("OnPurchaseRemoveReward");
-    }
+    }*/
 }
