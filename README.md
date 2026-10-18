@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="Assets/Sprites/icon.png" width="128" alt="Hidden Pool icon"/>
-
-# Hidden Pool
+<img src="docs/banners/banner-b-secret-hero.png" width="100%" alt="Hidden Pool — Guess Who? with Dota 2 heroes"/>
 
 **A "Guess Who?" party game built around Dota 2 heroes.**
 Share a seed with a friend, get the same board, hide your hero — and find theirs first.
