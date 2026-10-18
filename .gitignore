@@ -68,3 +68,12 @@ crashlytics-build.properties
 *.userproperties
 Assets/StreamingAssets/build_info
 Assets/StreamingAssets/build_info.meta
+
+# Signing keys (keystore + passwords) - never commit
+/[Kk]eys/
+*.keystore
+*.jks
+
+# Odin Inspector (paid asset, must not be redistributed)
+/[Aa]ssets/Plugins/Sirenix/
+/[Aa]ssets/Plugins/Sirenix.meta

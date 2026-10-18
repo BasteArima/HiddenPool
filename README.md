@@ -82,7 +82,7 @@ There is no server and no matchmaking: both players generate an **identical boar
 | Engine | Unity **2022.3.62f3** (LTS), uGUI + TextMeshPro |
 | Reactive / async | [UniRx](https://github.com/neuecc/UniRx), [UniTask](https://github.com/Cysharp/UniTask) |
 | Animation | [DOTween](http://dotween.demigiant.com/) |
-| Editor tooling | Odin Inspector, Asset Usage Detector, Build Report Tool |
+| Editor tooling | Asset Usage Detector, Build Report Tool |
 | Localization | Simple Localization (CSV, EN/RU) |
 | Analytics | GameAnalytics SDK |
 | UI art | GUI PRO Kit – Fantasy RPG |
@@ -115,6 +115,8 @@ The game flow is driven by a `ReactiveProperty<MatchData.State>` (`MainMenu → 
    ```
 3. Open the folder in Unity Hub and load `Assets/Scenes/Main.unity`.
 4. Press **Play**.
+
+> **Android release builds** are signed with a keystore that is not part of the repository. Put your own keystore at `Keys/HiddenPool.keystore` (the `Keys/` folder is git-ignored) or pick another one in *Player Settings → Publishing Settings*.
 
 ## Platforms
 

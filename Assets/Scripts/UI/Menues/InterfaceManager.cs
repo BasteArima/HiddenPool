@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -61,7 +60,7 @@ public class InterfaceManager : MonoBehaviour
     #if UNITY_EDITOR
     [SerializeField] private TMP_FontAsset _font;
 
-    [Button]
+    [ContextMenu("Change Font")]
     private void ChangeFont()
     {
         var texts = FindObjectsOfType<TMP_Text>(true);
