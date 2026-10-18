@@ -12,6 +12,7 @@ Share a seed with a friend, get the same board, hide your hero — and find thei
 [![Version](https://img.shields.io/badge/version-0.5.1-blue)](ProjectSettings/ProjectSettings.asset)
 [![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Android%20%7C%20WebGL-lightgrey)](#platforms)
 [![Languages](https://img.shields.io/badge/i18n-EN%20%7C%20RU-orange)](Assets/Resources/Localization)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
 <img src="Recordings/image_012_0000.jpg" width="820" alt="Hidden Pool game board"/>
 
@@ -125,6 +126,12 @@ The game flow is driven by a `ReactiveProperty<MatchData.State>` (`MainMenu → 
 | Windows | Standalone build, fullscreen/windowed toggle |
 | Android | Package `com.KatharsisGames.HiddenPools` |
 | WebGL | Uses the bundled responsive WebGL template |
+
+## License
+
+The source code of Hidden Pool is licensed under the [GNU General Public License v3.0](LICENSE).
+
+Third-party content keeps its own license and is **not** covered by the GPL: Dota 2 hero portraits (Valve Corporation), GUI PRO Kit – Fantasy RPG, Simple Localization and other Asset Store packages, UniRx / UniTask (MIT), DOTween, the Comfortaa font (SIL OFL) and the music track.
 
 ## Credits
 
